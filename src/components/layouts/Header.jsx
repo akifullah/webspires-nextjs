@@ -6,20 +6,22 @@ import { useState, useEffect, useRef } from 'react'
 
 const navLinks = [
     {
-        label: 'Services',
+        label: 'Our Services',
         href: '#services',
         hasDropdown: true,
         children: [
-            { label: 'Web Development', href: '#' },
-            { label: 'SEO Services', href: '#' },
-            { label: 'Digital Marketing', href: '#' },
-            { label: 'UI/UX Design', href: '#' },
+            { label: 'CRM Services', href: '#crm' },
+            { label: 'Social Media Services', href: '#social-media' },
+            { label: 'Google Ads Services', href: '#google-ads' },
+            { label: 'Meta Ads Services', href: '#meta-ads' },
+            { label: 'SEO Services', href: '#seo' },
+            { label: 'Shopify Development', href: '#shopify' },
+            { label: 'Google Guarantee', href: '#google-guarantee' },
         ],
     },
-    { label: 'About', href: '#about', hasDropdown: false },
-    { label: 'Portfolio', href: '#portfolio', hasDropdown: false },
-    { label: 'Results', href: '#results', hasDropdown: false },
-    { label: 'Blog', href: '#blog', hasDropdown: false },
+    { label: 'About Us', href: '#about', hasDropdown: false },
+    { label: 'Projects', href: '#portfolio', hasDropdown: false },
+    { label: 'Our Blog', href: '#blog', hasDropdown: false },
     { label: 'Contact', href: '#contact', hasDropdown: false },
 ]
 
@@ -151,7 +153,7 @@ const Header = () => {
                     <div className="hidden lg:flex items-center gap-3 ml-5 flex-shrink-0">
                         {/* Phone */}
                         <a
-                            href="tel:+92300000000"
+                            href="tel:+441615241569"
                             aria-label="Call Webspires"
                             className="flex items-center gap-2 text-[15px] font-bold text-primary no-underline tracking-wide whitespace-nowrap transition-opacity duration-200 hover:opacity-80"
                         >
@@ -166,20 +168,19 @@ const Header = () => {
                                     fill="currentColor"
                                 />
                             </svg>
-                            <span>+92-300-0000000</span>
+                            <span>+44 161 524 1569</span>
                         </a>
 
-                        {/* Search button */}
-                        <button
-                            id="header-search-btn"
-                            aria-label="Search"
-                            className="w-10 h-10 rounded-full bg-primary text-white border-0 cursor-pointer flex items-center justify-center flex-shrink-0 transition-all duration-200 shadow-[0_2px_8px_rgba(238,49,79,0.35)] hover:scale-110 hover:shadow-[0_4px_16px_rgba(238,49,79,0.45)]"
+                        {/* Book a Call CTA */}
+                        <a
+                            id="header-book-call-btn"
+                            href="https://call.webspires.co.uk?utm_source=websiteheader"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold text-[13px] tracking-wide px-5 py-2.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
                         >
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                <path d="M20 20l-3-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                            </svg>
-                        </button>
+                            Book a Call
+                        </a>
                     </div>
 
                     {/* Mobile Hamburger */}
@@ -228,10 +229,10 @@ const Header = () => {
                         ))}
                         <li>
                             <a
-                                href="tel:+92300000000"
+                                href="tel:+441615241569"
                                 className="block py-3 px-1 text-[15px] font-semibold text-primary no-underline mt-2 transition-opacity duration-200 hover:opacity-80"
                             >
-                                📞 +92-300-0000000
+                                📞 +44 161 524 1569
                             </a>
                         </li>
                     </ul>

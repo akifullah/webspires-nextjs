@@ -48,14 +48,14 @@ const badges = [
 ]
 
 const socialProof = [
-    { platform: 'Google', reviews: '50+', stars: 5 },
-    { platform: 'Clutch', reviews: '30+', stars: 5 },
-    { platform: 'Upwork', reviews: '100%', stars: 5, label: 'Job Success' },
+    { platform: 'Google', reviews: '45+', stars: 5 },
+    { platform: 'Clutch', reviews: '5.0', stars: 5 },
+    { platform: 'Trustpilot', reviews: '500+', stars: 5, label: 'Projects Done' },
 ]
 
 export default function Hero() {
     return (
-        <section aria-label="Hero — Web Development & Digital Marketing Agency Pakistan" className="bg-[#faf9f7] overflow-hidden">
+        <section aria-label="Hero — Best Web Design Agency UK | Webspires Limited" className="bg-[#faf9f7] overflow-hidden">
 
             {/* ── Main hero ──────────────────────────────────────── */}
             <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 pt-12 pb-0 lg:pt-20 flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
@@ -65,15 +65,15 @@ export default function Hero() {
 
                     {/* Eyebrow */}
                     <p className="text-[#3a3a3a] font-semibold uppercase text-xs sm:text-sm mb-3 leading-relaxed">
-                        Web Development &amp; Digital Marketing Agency In Pakistan
+                        UK&apos;s Leading Web Design &amp; Digital Marketing Agency
                     </p>
 
                     {/* Giant headline — single h1 per page */}
                     <h1 className="font-extrabold uppercase leading-[1.05] mb-6">
-                        <span className="block text-[36px] sm:text-[46px] lg:text-[52px] xl:text-[60px] text-primary">RESULTS</span>
-                        <span className="block text-[36px] sm:text-[46px] lg:text-[52px] xl:text-[60px] text-[#f97316]">&amp; GROWTH</span>
+                        <span className="block text-[36px] sm:text-[46px] lg:text-[52px] xl:text-[60px] text-primary">BUILDING</span>
+                        <span className="block text-[36px] sm:text-[46px] lg:text-[52px] xl:text-[60px] text-[#f97316]">THE UK&apos;S</span>
                         <span className="block text-[18px] sm:text-[22px] lg:text-[26px] text-[#3a3a3a] font-bold normal-case leading-snug mt-2">
-                            Powered By Strategy
+                            Most Trusted Websites &amp; Brands
                         </span>
                     </h1>
 
@@ -132,9 +132,9 @@ export default function Hero() {
                             "
                         </div>
                         <p className="text-[13px] text-gray-700 leading-relaxed font-medium">
-                            We built their website from scratch — traffic grew <strong className="text-primary">3× in 4 months.</strong>
+                            Webspires transformed our digital presence — <strong className="text-primary">incredible results!</strong>
                         </p>
-                        <p className="text-[12px] text-gray-400 mt-2 font-semibold">— Akif, Founder</p>
+                        <p className="text-[12px] text-gray-400 mt-2 font-semibold">— Sami, CEO Webspires UK</p>
                     </div>
 
                     {/* Stats badge */}
@@ -142,14 +142,14 @@ export default function Hero() {
                         className="hidden sm:block absolute bottom-24 left-0 lg:-left-4 z-20 bg-primary text-white rounded-2xl shadow-lg px-4 py-3"
                         aria-hidden="true"
                     >
-                        <p className="text-2xl font-extrabold leading-none">200+</p>
-                        <p className="text-[11px] font-semibold opacity-90 mt-0.5">Successful Projects</p>
+                        <p className="text-2xl font-extrabold leading-none">500+</p>
+                        <p className="text-[11px] font-semibold opacity-90 mt-0.5">Completed Projects</p>
                     </div>
 
                     {/* Person image — lazy loaded below fold on mobile */}
                     <Image
                         src="/images/hero-person.png"
-                        alt="Akif — Founder of Webspires digital marketing agency Pakistan"
+                        alt="Webspires — UK's Leading Web Design & Digital Marketing Agency"
                         width={500}
                         height={580}
                         priority
@@ -191,8 +191,8 @@ export default function Hero() {
                             ))}
                         </div>
                         <div>
-                            <p className="text-xs sm:text-sm font-bold text-gray-800">100+ Clients</p>
-                            <p className="text-[11px] sm:text-[12px] text-gray-500">Across Pakistan &amp; UAE</p>
+                            <p className="text-xs sm:text-sm font-bold text-gray-800">500+ Clients</p>
+                            <p className="text-[11px] sm:text-[12px] text-gray-500">Across the UK &amp; Beyond</p>
                         </div>
                     </div>
                 </div>

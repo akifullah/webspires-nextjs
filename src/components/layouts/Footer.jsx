@@ -4,25 +4,23 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const services = [
-    { label: 'Web Development', href: '#web-development' },
     { label: 'SEO Services', href: '#seo' },
-    { label: 'Digital Marketing', href: '#digital-marketing' },
-    { label: 'UI/UX Design', href: '#ui-ux' },
-    { label: 'eCommerce Solutions', href: '#ecommerce' },
-    { label: 'Content Marketing', href: '#content' },
-    { label: 'Google Ads (PPC)', href: '#digital-marketing' },
-    { label: 'Social Media Marketing', href: '#digital-marketing' },
+    { label: 'CRM Services', href: '#crm' },
+    { label: 'Meta Ads Services', href: '#meta-ads' },
+    { label: 'Google Ads Services', href: '#google-ads' },
+    { label: 'Social Media Services', href: '#social-media' },
+    { label: 'Google Guarantee Services', href: '#google-guarantee' },
+    { label: 'Shopify Development Services', href: '#shopify' },
 ]
 
 const company = [
+    { label: 'Home', href: '/' },
     { label: 'About Us', href: '#about' },
-    { label: 'Our Process', href: '#process' },
-    { label: 'Portfolio', href: '#portfolio' },
-    { label: 'Case Studies', href: '#results' },
-    { label: 'Client Reviews', href: '#testimonials' },
     { label: 'Blog', href: '#blog' },
-    { label: 'Careers', href: '#careers' },
+    { label: 'Projects', href: '#portfolio' },
     { label: 'Contact Us', href: '#contact' },
+    { label: 'Terms & Conditions', href: '/terms-conditions' },
+    { label: 'Privacy Policy', href: '/privacy-policy' },
 ]
 
 const socialLinks = [
@@ -138,7 +136,7 @@ export default function Footer() {
                         </Link>
 
                         <p className="text-[14px] text-gray-400 leading-relaxed mb-6 max-w-[300px]">
-                            Pakistan's results-driven digital agency. We build high-performance websites, run ROI-focused marketing campaigns, and help businesses grow online since 2017.
+                            UK&apos;s results-driven digital agency. We build high-performance websites, run ROI-focused marketing campaigns, and help businesses grow online. Best Web Design Agency UK since 2023.
                         </p>
 
                         {/* Social Icons */}
@@ -231,8 +229,8 @@ export default function Footer() {
                         <div className="space-y-3.5 mb-7">
                             {[
                                 {
-                                    href: 'tel:+92300000000',
-                                    label: '+92-300-0000000',
+                                    href: 'tel:+441615241569',
+                                    label: '+44 161 524 1569',
                                     icon: (
                                         <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                             <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.01L6.62 10.79z" />
@@ -240,8 +238,8 @@ export default function Footer() {
                                     ),
                                 },
                                 {
-                                    href: 'mailto:hello@webspires.com.pk',
-                                    label: 'hello@webspires.com.pk',
+                                    href: 'mailto:info@webspires.co.uk',
+                                    label: 'info@webspires.co.uk',
                                     icon: (
                                         <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -250,8 +248,8 @@ export default function Footer() {
                                     ),
                                 },
                                 {
-                                    href: 'https://maps.google.com',
-                                    label: 'Lahore, Pakistan',
+                                    href: 'https://maps.google.com/?q=39A+Manchester+Rd+Bolton+BL3+2NZ',
+                                    label: '39A Manchester Rd, Bolton BL3 2NZ, UK',
                                     icon: (
                                         <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
@@ -311,7 +309,7 @@ export default function Footer() {
                 {/* ── Bottom Bar ──────────────────────────────────────── */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-gray-500">
                     <p>
-                        © {currentYear} <span className="text-white font-semibold">Webspires</span>. All rights reserved. Made with ❤️ in Pakistan.
+                        Copyright &copy; {currentYear} <span className="text-white font-semibold">Webspires Ltd</span>. All Rights Reserved.
                     </p>
 
                     <div className="flex flex-wrap items-center gap-x-5 gap-y-2 justify-center">

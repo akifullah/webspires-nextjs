@@ -1,6 +1,6 @@
 const stats = [
     {
-        value: '200+',
+        value: '500+',
         label: 'Projects Delivered',
         sub: 'Across all industries',
         icon: (
@@ -12,9 +12,9 @@ const stats = [
         color: '#EE314F',
     },
     {
-        value: '100+',
+        value: '500+',
         label: 'Happy Clients',
-        sub: 'Pakistan, UAE & UK',
+        sub: 'UK & Worldwide',
         icon: (
             <svg viewBox="0 0 28 28" fill="none" className="w-6 h-6" aria-hidden="true">
                 <circle cx="10" cy="9" r="4" stroke="currentColor" strokeWidth="1.8" />
@@ -37,9 +37,9 @@ const stats = [
         color: '#10b981',
     },
     {
-        value: '8+',
-        label: 'Years of Experience',
-        sub: 'In digital services',
+        value: '2023',
+        label: 'Established',
+        sub: 'Proudly serving the UK',
         icon: (
             <svg viewBox="0 0 28 28" fill="none" className="w-6 h-6" aria-hidden="true">
                 <circle cx="14" cy="14" r="10" stroke="currentColor" strokeWidth="1.8" />
@@ -49,7 +49,7 @@ const stats = [
         color: '#3b82f6',
     },
     {
-        value: '50+',
+        value: '45+',
         label: 'Google Reviews',
         sub: 'Verified 5-star ratings',
         icon: (
@@ -145,11 +145,11 @@ export default function StatsStrip() {
                     {/* LEFT — Heading + highlights */}
                     <div>
                         <h2 id="results-heading" className="text-[30px] sm:text-[36px] lg:text-[52px] xl:text-[58px] font-extrabold text-white leading-[1.05] mb-5">
-                            Numbers That<br />
-                            <span className="text-primary">Prove</span> Our Work
+                            Our Success: Driving<br />
+                            <span className="text-primary">Digital Excellence</span>
                         </h2>
                         <p className="text-gray-400 text-[16px] leading-relaxed mb-10 max-w-[440px]">
-                            Every stat below is backed by real client outcomes — not marketing fluff. We measure success by the revenue and growth we generate for your business.
+                            Over 500+ completed works and still counting. Every stat below is backed by real client outcomes from businesses across the UK and beyond.
                         </p>
 
                         {/* Highlights checklist */}
@@ -224,7 +224,7 @@ export default function StatsStrip() {
                 {/* ── Trust bar ─────────────────────────────────── */}
                 <div className="mt-16 pt-10 border-t border-white/[0.07] flex flex-col sm:flex-row items-center justify-between gap-5">
                     <p className="text-gray-500 text-[13px] font-medium text-center sm:text-left">
-                        Trusted by businesses across Pakistan, UAE &amp; the UK
+                        Trusted by businesses across the United Kingdom &amp; beyond
                     </p>
                     <div className="flex items-center gap-6">
                         {[

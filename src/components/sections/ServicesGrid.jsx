@@ -4,88 +4,91 @@ import { useState } from 'react'
 
 const services = [
     {
-        id: 'web-dev',
+        id: 'crm',
         icon: (
             <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
                 <rect width="48" height="48" rx="12" fill="#EE314F" fillOpacity=".1" />
                 <path d="M14 18l-6 6 6 6M34 18l6 6-6 6M28 12l-8 24" stroke="#EE314F" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
         ),
-        title: 'Web Development',
-        description: 'High-performance, conversion-driven websites built with modern tech stacks — from landing pages to full-scale eCommerce platforms.',
-        tags: ['WordPress', 'Next.js', 'Shopify', 'Laravel'],
-        href: '#web-development',
+        title: 'CRM Services',
+        description: 'Streamline your customer relationships with bespoke CRM development. We build systems that help you track, manage and convert leads more effectively.',
+        tags: ['CRM Development', 'Automation', 'Integration', 'Reporting'],
+        href: '#crm',
+    },
+    {
+        id: 'google-ads',
+        icon: (
+            <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
+                <rect width="48" height="48" rx="12" fill="#f97316" fillOpacity=".1" />
+                <path d="M12 36l8-12 6 8 5-6 5 10" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="36" cy="14" r="4" stroke="#f97316" strokeWidth="2.5" />
+            </svg>
+        ),
+        title: 'Google Ads Services',
+        description: 'ROI-focused Google Ads campaigns managed by certified experts. We craft compelling ad strategies that generate real leads and measurable UK revenue.',
+        tags: ['Search Ads', 'Display Ads', 'Shopping Ads', 'PPC'],
+        href: '#google-ads',
+    },
+    {
+        id: 'meta-ads',
+        icon: (
+            <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
+                <rect width="48" height="48" rx="12" fill="#3b82f6" fillOpacity=".1" />
+                <rect x="12" y="14" width="24" height="20" rx="3" stroke="#3b82f6" strokeWidth="2.5" />
+                <path d="M19 22h10M19 27h6" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+        ),
+        title: 'Meta Ads Services',
+        description: 'Precision-targeted Facebook and Instagram ad campaigns that reach your ideal UK audience and drive conversions at scale.',
+        tags: ['Facebook Ads', 'Instagram Ads', 'Retargeting', 'Creative'],
+        href: '#meta-ads',
+    },
+    {
+        id: 'shopify',
+        icon: (
+            <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
+                <rect width="48" height="48" rx="12" fill="#8b5cf6" fillOpacity=".1" />
+                <path d="M10 14h4l3 14h14l3-10H17" stroke="#8b5cf6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="23" cy="33" r="2" fill="#8b5cf6" />
+                <circle cx="31" cy="33" r="2" fill="#8b5cf6" />
+            </svg>
+        ),
+        title: 'Shopify Development',
+        description: 'End-to-end Shopify stores built to sell in the UK market. Optimised product pages, fast checkout, payment integration and abandoned cart recovery.',
+        tags: ['Shopify', 'Theme Dev', 'Apps', 'CRO'],
+        href: '#shopify',
     },
     {
         id: 'seo',
         icon: (
             <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
-                <rect width="48" height="48" rx="12" fill="#f97316" fillOpacity=".1" />
-                <circle cx="22" cy="22" r="8" stroke="#f97316" strokeWidth="2.5" />
-                <path d="M28 28l6 6" stroke="#f97316" strokeWidth="2.5" strokeLinecap="round" />
-                <path d="M18 22h8M22 18v8" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
+                <rect width="48" height="48" rx="12" fill="#10b981" fillOpacity=".1" />
+                <circle cx="22" cy="22" r="8" stroke="#10b981" strokeWidth="2.5" />
+                <path d="M28 28l6 6" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M18 22h8M22 18v8" stroke="#10b981" strokeWidth="2" strokeLinecap="round" />
             </svg>
         ),
         title: 'SEO Services',
-        description: 'Dominate Google rankings with data-backed SEO strategies — technical audits, keyword research, link building & content optimization.',
+        description: 'Dominate Google UK rankings with data-backed SEO strategies — technical audits, keyword research, link building and content optimisation.',
         tags: ['Technical SEO', 'Local SEO', 'Link Building', 'Content'],
         href: '#seo',
     },
     {
-        id: 'digital-marketing',
-        icon: (
-            <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
-                <rect width="48" height="48" rx="12" fill="#3b82f6" fillOpacity=".1" />
-                <path d="M12 36l8-12 6 8 5-6 5 10" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="36" cy="14" r="4" stroke="#3b82f6" strokeWidth="2.5" />
-            </svg>
-        ),
-        title: 'Digital Marketing',
-        description: 'ROI-focused paid campaigns on Google, Meta & TikTok. We craft compelling ad strategies that generate real leads and measurable revenue.',
-        tags: ['Google Ads', 'Meta Ads', 'TikTok Ads', 'PPC'],
-        href: '#digital-marketing',
-    },
-    {
-        id: 'ui-ux',
-        icon: (
-            <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
-                <rect width="48" height="48" rx="12" fill="#8b5cf6" fillOpacity=".1" />
-                <rect x="12" y="14" width="24" height="20" rx="3" stroke="#8b5cf6" strokeWidth="2.5" />
-                <path d="M19 22h10M19 27h6" stroke="#8b5cf6" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-        ),
-        title: 'UI/UX Design',
-        description: 'Beautiful, intuitive designs that convert visitors into customers. We combine aesthetics with psychology to create unforgettable user experiences.',
-        tags: ['Figma', 'Prototyping', 'User Research', 'Branding'],
-        href: '#ui-ux',
-    },
-    {
-        id: 'ecommerce',
-        icon: (
-            <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
-                <rect width="48" height="48" rx="12" fill="#10b981" fillOpacity=".1" />
-                <path d="M10 14h4l3 14h14l3-10H17" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="23" cy="33" r="2" fill="#10b981" />
-                <circle cx="31" cy="33" r="2" fill="#10b981" />
-            </svg>
-        ),
-        title: 'eCommerce Solutions',
-        description: 'End-to-end eCommerce stores built to sell — optimized product pages, fast checkout, payment integration & abandoned cart recovery.',
-        tags: ['Shopify', 'WooCommerce', 'Payment Gateway', 'CRO'],
-        href: '#ecommerce',
-    },
-    {
-        id: 'content',
+        id: 'social-media',
         icon: (
             <svg viewBox="0 0 48 48" fill="none" className="w-10 h-10">
                 <rect width="48" height="48" rx="12" fill="#ec4899" fillOpacity=".1" />
-                <path d="M15 14h18M15 20h13M15 26h16M15 32h10" stroke="#ec4899" strokeWidth="2.5" strokeLinecap="round" />
+                <circle cx="16" cy="16" r="4" stroke="#ec4899" strokeWidth="2.5" />
+                <circle cx="32" cy="14" r="4" stroke="#ec4899" strokeWidth="2.5" />
+                <circle cx="28" cy="32" r="4" stroke="#ec4899" strokeWidth="2.5" />
+                <path d="M20 18l8-2M20 18l6 12" stroke="#ec4899" strokeWidth="2" strokeLinecap="round" />
             </svg>
         ),
-        title: 'Content Marketing',
-        description: 'Strategic content that ranks, converts and builds authority. Blog posts, case studies, social content and email sequences that drive growth.',
-        tags: ['Blog Writing', 'Email Marketing', 'Social Media', 'Copywriting'],
-        href: '#content',
+        title: 'Social Media Management',
+        description: 'Strategic social media management that builds your brand, grows your UK audience and turns followers into loyal customers.',
+        tags: ['Content Creation', 'Scheduling', 'Analytics', 'Engagement'],
+        href: '#social-media',
     },
 ]
 
@@ -102,11 +105,11 @@ export default function ServicesGrid() {
                         What We Do
                     </span>
                     <h2 id="services-heading" className="text-[28px] sm:text-[32px] lg:text-[44px] font-extrabold text-[#1a1a2e] leading-tight mb-4">
-                        Full-Stack Digital Services<br />
+                        UK&apos;s Leading Digital Services<br />
                         <span className="text-primary">Built to Grow Your Business</span>
                     </h2>
                     <p className="text-gray-500 text-[17px] max-w-[600px] mx-auto leading-relaxed">
-                        From strategy to execution — we deliver every digital service your business needs to dominate online and drive real revenue.
+                        Here&apos;s a concise summary of the services offered by Webspires Limited — your trusted UK digital partner from strategy to execution.
                     </p>
                 </div>
 

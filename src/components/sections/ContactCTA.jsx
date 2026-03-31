@@ -45,9 +45,9 @@ export default function ContactCTA() {
                                         <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.01L6.62 10.79z" fill="currentColor" />
                                     </svg>
                                 ),
-                                label: 'Call / WhatsApp',
-                                value: '+92-300-0000000',
-                                href: 'tel:+92300000000',
+                                label: 'Call Us',
+                                value: '+44 161 524 1569',
+                                href: 'tel:+441615241569',
                                 color: '#10b981',
                             },
                             {
@@ -58,8 +58,8 @@ export default function ContactCTA() {
                                     </svg>
                                 ),
                                 label: 'Email Us',
-                                value: 'hello@webspires.com.pk',
-                                href: 'mailto:hello@webspires.com.pk',
+                                value: 'info@webspires.co.uk',
+                                href: 'mailto:info@webspires.co.uk',
                                 color: '#3b82f6',
                             },
                             {
@@ -70,7 +70,7 @@ export default function ContactCTA() {
                                     </svg>
                                 ),
                                 label: 'Office',
-                                value: 'Lahore, Pakistan',
+                                value: '39A Manchester Rd, Bolton BL3 2NZ, UK',
                                 color: '#EE314F',
                             },
                         ].map((item) => (

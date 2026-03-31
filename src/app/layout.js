@@ -25,32 +25,32 @@ export const metadata = {
 
   title: {
     default:
-      "Web Development & Digital Marketing Agency in Pakistan | Webspires",
+      "Best Web Design Agency UK | Webspires Limited",
     template: "%s | Webspires",
   },
   description:
-    "Webspires is Pakistan's top-rated web development & digital marketing agency. We build high-performance websites, run ROI-driven SEO & paid ad campaigns that grow your revenue.",
+    "Looking for the best Web Design Agency UK? Webspires builds websites that help your business grow and stand out online. We offer web development, SEO, social media, Google Ads, Meta Ads & more.",
 
   alternates: {
-    canonical: "https://webspires.com.pk/",
-    languages: { "en-PK": "https://webspires.com.pk/" },
+    canonical: "https://webspires.co.uk/",
+    languages: { "en-GB": "https://webspires.co.uk/" },
   },
 
   openGraph: {
     type: "website",
-    locale: "en_PK",
-    url: "https://webspires.com.pk/",
+    locale: "en_GB",
+    url: "https://webspires.co.uk/",
     siteName: "Webspires",
     title:
-      "Web Development & Digital Marketing Agency in Pakistan | Webspires",
+      "Best Web Design Agency UK | Webspires Limited",
     description:
-      "Webspires is Pakistan's top-rated web development & digital marketing agency. We build high-performance websites, run ROI-driven SEO & paid ad campaigns.",
+      "Looking for the best Web Design Agency UK? Webspires builds websites that help your business grow and stand out online.",
     images: [
       {
         url: "/images/webspires-logo-icon.png",
         width: 1200,
         height: 630,
-        alt: "Webspires – Web Development & Digital Marketing Agency Pakistan",
+        alt: "Webspires – Best Web Design Agency UK",
       },
     ],
   },
@@ -58,9 +58,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Web Development & Digital Marketing Agency in Pakistan | Webspires",
+      "Best Web Design Agency UK | Webspires Limited",
     description:
-      "Pakistan's results-driven digital agency. High-performance websites, SEO & paid campaigns that grow your business.",
+      "UK's results-driven digital agency. High-performance websites, SEO & paid campaigns that grow your business.",
     images: ["/images/webspires-logo-icon.png"],
     creator: "@webspires",
   },
@@ -87,23 +87,24 @@ export const metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Webspires",
-  url: "https://webspires.com.pk",
-  logo: "https://webspires.com.pk/images/webspires-logo-icon.png",
-  image: "https://webspires.com.pk/images/webspires-logo-icon.png",
+  name: "Webspires Limited",
+  url: "https://webspires.co.uk",
+  logo: "https://webspires.co.uk/images/webspires-logo-icon.png",
+  image: "https://webspires.co.uk/images/webspires-logo-icon.png",
   description:
-    "Pakistan's top-rated web development and digital marketing agency delivering high-performance websites, SEO and paid ad services.",
+    "UK's leading web design and digital marketing agency delivering high-performance websites, SEO, Google Ads, Meta Ads and social media services.",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Lahore",
-    addressRegion: "Punjab",
-    addressCountry: "PK",
+    streetAddress: "39A Manchester Rd",
+    addressLocality: "Bolton",
+    postalCode: "BL3 2NZ",
+    addressCountry: "GB",
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+92-300-0000000",
+    telephone: "+44-161-524-1569",
     contactType: "customer support",
-    availableLanguage: ["English", "Urdu"],
+    availableLanguage: ["English"],
   },
   sameAs: [
     "https://facebook.com/webspires",
@@ -116,7 +117,7 @@ const organizationSchema = {
     ratingValue: "5",
     bestRating: "5",
     worstRating: "1",
-    reviewCount: "80",
+    reviewCount: "45",
   },
 };
 
@@ -124,10 +125,10 @@ const webSiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Webspires",
-  url: "https://webspires.com.pk",
+  url: "https://webspires.co.uk",
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://webspires.com.pk/?s={search_term_string}",
+    target: "https://webspires.co.uk/?s={search_term_string}",
     "query-input": "required name=search_term_string",
   },
 };

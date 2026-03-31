@@ -49,8 +49,8 @@ const reasons = [
                 <circle cx="20" cy="20" r="16" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" />
             </svg>
         ),
-        title: 'Local Expertise, Global Standards',
-        description: 'We understand the Pakistani market deeply while applying global best practices — giving you the competitive edge locally and internationally.',
+        title: 'UK Market Expertise, Global Standards',
+        description: 'We understand the UK market deeply while applying global best practices — giving your business the competitive edge locally and internationally.',
         color: '#10b981',
     },
     {
@@ -82,7 +82,7 @@ export default function WhyWebspires() {
                             <span className="text-primary">Your Growth Partner</span>
                         </h2>
                         <p className="text-gray-500 text-[16px] leading-relaxed mb-6">
-                            We don't just build websites or run ads. We partner with ambitious businesses to craft digital strategies that generate real, sustainable growth. Here's what sets us apart.
+                            We don&apos;t just build websites or run ads. We partner with ambitious UK businesses to craft digital strategies that generate real, sustainable growth. Here&apos;s what sets us apart.
                         </p>
                         <a
                             id="why-cta"
@@ -100,8 +100,8 @@ export default function WhyWebspires() {
                     <div className="bg-[#faf9f7] rounded-2xl p-8 border border-gray-100">
                         <div className="grid grid-cols-2 gap-6">
                             {[
-                                { val: '200+', label: 'Projects Done' },
-                                { val: '8+', label: 'Years Active' },
+                                { val: '500+', label: 'Projects Done' },
+                                { val: '2023', label: 'Established' },
                                 { val: '98%', label: 'Happy Clients' },
                                 { val: '5×', label: 'Avg. ROI' },
                             ].map((s) => (
