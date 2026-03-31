@@ -14,7 +14,7 @@ const services = [
         title: 'CRM Services',
         description: 'Streamline your customer relationships with bespoke CRM development. We build systems that help you track, manage and convert leads more effectively.',
         tags: ['CRM Development', 'Automation', 'Integration', 'Reporting'],
-        href: '#crm',
+        href: '/services/crm',
     },
     {
         id: 'google-ads',
@@ -28,7 +28,7 @@ const services = [
         title: 'Google Ads Services',
         description: 'ROI-focused Google Ads campaigns managed by certified experts. We craft compelling ad strategies that generate real leads and measurable UK revenue.',
         tags: ['Search Ads', 'Display Ads', 'Shopping Ads', 'PPC'],
-        href: '#google-ads',
+        href: '/services/google-ads',
     },
     {
         id: 'meta-ads',
@@ -42,7 +42,7 @@ const services = [
         title: 'Meta Ads Services',
         description: 'Precision-targeted Facebook and Instagram ad campaigns that reach your ideal UK audience and drive conversions at scale.',
         tags: ['Facebook Ads', 'Instagram Ads', 'Retargeting', 'Creative'],
-        href: '#meta-ads',
+        href: '/services/meta-ads',
     },
     {
         id: 'shopify',
@@ -57,7 +57,7 @@ const services = [
         title: 'Shopify Development',
         description: 'End-to-end Shopify stores built to sell in the UK market. Optimised product pages, fast checkout, payment integration and abandoned cart recovery.',
         tags: ['Shopify', 'Theme Dev', 'Apps', 'CRO'],
-        href: '#shopify',
+        href: '/services/shopify',
     },
     {
         id: 'seo',
@@ -72,7 +72,7 @@ const services = [
         title: 'SEO Services',
         description: 'Dominate Google UK rankings with data-backed SEO strategies — technical audits, keyword research, link building and content optimisation.',
         tags: ['Technical SEO', 'Local SEO', 'Link Building', 'Content'],
-        href: '#seo',
+        href: '/services/seo',
     },
     {
         id: 'social-media',
@@ -88,7 +88,7 @@ const services = [
         title: 'Social Media Management',
         description: 'Strategic social media management that builds your brand, grows your UK audience and turns followers into loyal customers.',
         tags: ['Content Creation', 'Scheduling', 'Analytics', 'Engagement'],
-        href: '#social-media',
+        href: '/services/social-media',
     },
 ]
 

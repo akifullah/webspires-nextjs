@@ -99,7 +99,7 @@ export default function AboutCTA() {
                                 href="https://call.webspires.co.uk?utm_source=aboutcta"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold text-[15px] tracking-wide px-8 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(238,49,79,0.4)]"
+                                className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold text-[15px] tracking-wide px-8 py-4 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                             >
                                 Book a Free Call
                                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">

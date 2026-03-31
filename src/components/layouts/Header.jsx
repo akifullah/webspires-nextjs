@@ -7,22 +7,21 @@ import { useState, useEffect, useRef } from 'react'
 const navLinks = [
     {
         label: 'Our Services',
-        href: '#services',
+        href: '/services',
         hasDropdown: true,
         children: [
-            { label: 'CRM Services', href: '#crm' },
-            { label: 'Social Media Services', href: '#social-media' },
-            { label: 'Google Ads Services', href: '#google-ads' },
-            { label: 'Meta Ads Services', href: '#meta-ads' },
-            { label: 'SEO Services', href: '#seo' },
-            { label: 'Shopify Development', href: '#shopify' },
-            { label: 'Google Guarantee', href: '#google-guarantee' },
+            { label: 'Web Design', href: '/services/web-design' },
+            { label: 'SEO Services', href: '/services/seo' },
+            { label: 'Google Ads', href: '/services/google-ads' },
+            { label: 'Meta Ads', href: '/services/meta-ads' },
+            { label: 'Shopify Development', href: '/services/shopify' },
+            { label: 'CRM Services', href: '/services/crm' },
+            { label: 'Social Media', href: '/services/social-media' },
         ],
     },
-    { label: 'About Us', href: '#about', hasDropdown: false },
-    { label: 'Projects', href: '#portfolio', hasDropdown: false },
-    { label: 'Our Blog', href: '#blog', hasDropdown: false },
-    { label: 'Contact', href: '#contact', hasDropdown: false },
+    { label: 'About Us', href: '/about', hasDropdown: false },
+    { label: 'Projects', href: '/projects', hasDropdown: false },
+    { label: 'Contact', href: '/#contact', hasDropdown: false },
 ]
 
 const Header = () => {
@@ -212,26 +211,49 @@ const Header = () => {
                     id="mobile-nav"
                     aria-label="Mobile navigation"
                     aria-hidden={!mobileOpen}
-                    className={`lg:hidden border-t border-black/[0.07] bg-white overflow-hidden transition-all duration-300 ${mobileOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                    className={`lg:hidden border-t border-black/[0.07] bg-white overflow-hidden transition-all duration-300 ${mobileOpen ? 'max-h-[700px] opacity-100' : 'max-h-0 opacity-0'
                         }`}
                 >
                     <ul className="list-none m-0 px-6 pt-2 pb-4" role="list">
-                        {navLinks.map((link) => (
-                            <li key={link.label}>
-                                <Link
-                                    href={link.href}
-                                    onClick={() => setMobileOpen(false)}
-                                    className="block py-3 px-1 text-[15px] font-semibold text-[#3a3a3a] no-underline border-b border-black/[0.06] transition-colors duration-200 hover:text-primary"
-                                >
-                                    {link.label}
-                                </Link>
-                            </li>
-                        ))}
+                        {/* Top-level links */}
                         <li>
-                            <a
-                                href="tel:+441615241569"
-                                className="block py-3 px-1 text-[15px] font-semibold text-primary no-underline mt-2 transition-opacity duration-200 hover:opacity-80"
-                            >
+                            <Link href="/services" onClick={() => setMobileOpen(false)}
+                                className="block py-3 px-1 text-[15px] font-semibold text-[#3a3a3a] no-underline border-b border-black/[0.06] transition-colors duration-200 hover:text-primary">
+                                Our Services
+                            </Link>
+                            {/* Service sub-links */}
+                            <ul className="list-none m-0 pl-3 pb-1" role="list">
+                                {navLinks[0].children.map((child) => (
+                                    <li key={child.label}>
+                                        <Link href={child.href} onClick={() => setMobileOpen(false)}
+                                            className="block py-2 px-2 text-[13px] font-medium text-gray-500 no-underline border-l-2 border-gray-100 hover:text-primary hover:border-primary transition-colors duration-150">
+                                            {child.label}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
+                        <li>
+                            <Link href="/about" onClick={() => setMobileOpen(false)}
+                                className="block py-3 px-1 text-[15px] font-semibold text-[#3a3a3a] no-underline border-b border-black/[0.06] transition-colors duration-200 hover:text-primary">
+                                About Us
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/projects" onClick={() => setMobileOpen(false)}
+                                className="block py-3 px-1 text-[15px] font-semibold text-[#3a3a3a] no-underline border-b border-black/[0.06] transition-colors duration-200 hover:text-primary">
+                                Projects
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/#contact" onClick={() => setMobileOpen(false)}
+                                className="block py-3 px-1 text-[15px] font-semibold text-[#3a3a3a] no-underline border-b border-black/[0.06] transition-colors duration-200 hover:text-primary">
+                                Contact
+                            </Link>
+                        </li>
+                        <li>
+                            <a href="tel:+441615241569"
+                                className="block py-3 px-1 text-[15px] font-semibold text-primary no-underline mt-2 transition-opacity duration-200 hover:opacity-80">
                                 📞 +44 161 524 1569
                             </a>
                         </li>
