@@ -4,10 +4,7 @@ import { generateSEO } from "@/lib/seo";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 
-/* ── Fonts ────────────────────────────────────────────────────
-   Only load Geist Sans (drop Mono — unused on front end).
-   display:swap prevents invisible text during font load (CLS/FID).
-*/
+/* ── Fonts ─────────────────────────────────────────────── */
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -15,11 +12,17 @@ const geistSans = Geist({
   preload: true,
 });
 
-/* ── Page Metadata (SEO) ────────────────────────────────────── */
+/* ── Viewport (must be a SEPARATE export in Next.js App Router) ── */
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
+/* ── Page Metadata ──────────────────────────────────────── */
 export const metadata = {
   ...generateSEO({ path: "/" }),
 
-  // Override title with a keyword-rich homepage title
   title: {
     default:
       "Web Development & Digital Marketing Agency in Pakistan | Webspires",
@@ -28,26 +31,18 @@ export const metadata = {
   description:
     "Webspires is Pakistan's top-rated web development & digital marketing agency. We build high-performance websites, run ROI-driven SEO & paid ad campaigns that grow your revenue.",
 
-  // Viewport — prevent zoom issues on mobile
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
-
-  // Canonical & language
   alternates: {
     canonical: "https://webspires.com.pk/",
     languages: { "en-PK": "https://webspires.com.pk/" },
   },
 
-  // Open Graph
   openGraph: {
     type: "website",
     locale: "en_PK",
     url: "https://webspires.com.pk/",
     siteName: "Webspires",
-    title: "Web Development & Digital Marketing Agency in Pakistan | Webspires",
+    title:
+      "Web Development & Digital Marketing Agency in Pakistan | Webspires",
     description:
       "Webspires is Pakistan's top-rated web development & digital marketing agency. We build high-performance websites, run ROI-driven SEO & paid ad campaigns.",
     images: [
@@ -60,17 +55,16 @@ export const metadata = {
     ],
   },
 
-  // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "Web Development & Digital Marketing Agency in Pakistan | Webspires",
+    title:
+      "Web Development & Digital Marketing Agency in Pakistan | Webspires",
     description:
       "Pakistan's results-driven digital agency. High-performance websites, SEO & paid campaigns that grow your business.",
     images: ["/images/webspires-logo-icon.png"],
     creator: "@webspires",
   },
 
-  // Robots
   robots: {
     index: true,
     follow: true,
@@ -83,19 +77,13 @@ export const metadata = {
     },
   },
 
-  // Icons / PWA
   icons: {
     icon: "/favicon.ico",
     apple: "/images/webspires-logo-icon.png",
   },
-
-  // Verification (add real codes when available)
-  verification: {
-    google: "REPLACE_WITH_GOOGLE_SITE_VERIFICATION",
-  },
 };
 
-/* ── JSON-LD Structured Data ─────────────────────────────────── */
+/* ── JSON-LD Structured Data ────────────────────────────── */
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -144,7 +132,7 @@ const webSiteSchema = {
   },
 };
 
-/* ── Root Layout ─────────────────────────────────────────────── */
+/* ── Root Layout ─────────────────────────────────────────── */
 export default function RootLayout({ children }) {
   return (
     <html
@@ -152,33 +140,34 @@ export default function RootLayout({ children }) {
       dir="ltr"
       className={`${geistSans.variable} h-full`}
     >
-      <head>
-        {/* JSON-LD structured data */}
+      {/*
+        Do NOT add a manual <head> tag here.
+        Next.js App Router manages <head> automatically via the metadata export.
+        JSON-LD scripts are injected via dangerouslySetInnerHTML on the body instead,
+        or via a server component rendered inside <body>.
+      */}
+      <body className="min-h-full flex flex-col antialiased">
+        {/* Inline JSON-LD — safe in body, crawlers read it fine */}
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
           }}
         />
         <script
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(webSiteSchema),
           }}
         />
-        {/* Preconnect to external origins used by fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-      </head>
-      <body className="min-h-full flex flex-col antialiased">
+
         {/* Skip-to-content for keyboard / screen-reader users */}
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
+
         <Header />
         <main id="main-content" className="flex flex-col flex-1">
           {children}
