@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import HeroAuditCta from '@/components/sections/HeroAuditCta'
 
 /* ── Partner / Badge logos ────────────────────────────────── */
 const badges = [
@@ -142,16 +143,7 @@ export default function Hero() {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col xs:flex-row sm:flex-row items-stretch xs:items-center gap-3 sm:gap-4 mb-8">
-                        <a
-                            href="#contact"
-                            id="hero-cta-primary"
-                            className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold text-sm tracking-wide px-7 py-3.5 rounded-lg transition-colors duration-200 hover:-translate-y-0.5 whitespace-nowrap"
-                        >
-                            <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-                                <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                            Get a Free Growth Audit
-                        </a>
+                        <HeroAuditCta />
                         <a
                             href="#portfolio"
                             id="hero-cta-secondary"
@@ -199,7 +191,7 @@ export default function Hero() {
                         <p className="text-[13px] text-gray-700 leading-relaxed font-medium">
                             Webspires transformed our digital presence <strong className="text-primary">incredible results!</strong>
                         </p>
-                        <p className="text-[12px] text-gray-400 mt-2 font-semibold"> Sami, CEO Webspires UK</p>
+                        <p className="text-[12px] text-gray-400 mt-2 font-semibold">CEO, Webspires UK</p>
                     </div>
 
                     {/* Stats badge */}
@@ -265,21 +257,6 @@ export default function Hero() {
                         </div>
                     </div>
                 </div>
-
-                <ul
-                    className="mt-7 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 max-w-[1320px] mx-auto px-4"
-                    aria-label="Certifications and partnerships"
-                >
-                    {certifications.map((c) => (
-                        <li
-                            key={c.label}
-                            className="flex items-center gap-2 text-[13px] font-semibold text-gray-600"
-                        >
-                            <span className="flex-shrink-0">{c.icon}</span>
-                            {c.label}
-                        </li>
-                    ))}
-                </ul>
             </div>
         </section>
     )
