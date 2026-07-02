@@ -56,11 +56,11 @@ function ImageField({ value, onChange }) {
                 <img
                     src={value}
                     alt="Preview"
-                    className="h-24 w-auto max-w-full rounded-lg border border-slate-200 bg-slate-50 object-contain p-2"
+                    className="h-16 w-auto max-w-[160px] rounded-lg border border-slate-200 bg-slate-50 object-contain p-1.5"
                 />
             ) : (
-                <div className="flex h-24 w-full max-w-sm items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 text-sm text-slate-400">
-                    No image selected
+                <div className="flex h-16 w-full max-w-[160px] items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 text-xs text-slate-400">
+                    No image
                 </div>
             )}
 

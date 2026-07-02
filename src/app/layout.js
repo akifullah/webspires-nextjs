@@ -34,10 +34,12 @@ export const viewport = {
 export async function generateMetadata() {
   let siteName = "Webspires";
   let previewImage = "/images/webspires-logo-icon.png";
+  let favicon = "/favicon.ico";
   try {
     const settings = await getSettings();
     siteName = settings.siteName || siteName;
     previewImage = settings.ogImage || previewImage;
+    favicon = settings.favicon || favicon;
   } catch {
     // keep defaults
   }
@@ -100,7 +102,8 @@ export async function generateMetadata() {
     },
 
     icons: {
-      icon: "/favicon.ico",
+      icon: favicon,
+      shortcut: favicon,
       apple: previewImage,
     },
   };

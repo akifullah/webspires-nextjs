@@ -44,6 +44,12 @@ export const SETTINGS_SECTIONS = [
                 type: 'image',
                 hint: 'Shown when your site is shared on social media, and used as the app touch icon.',
             },
+            {
+                name: 'favicon',
+                label: 'Favicon (browser tab icon)',
+                type: 'image',
+                hint: 'The small icon shown in the browser tab. A square PNG (e.g. 32×32 or 512×512) or .ico works best.',
+            },
         ],
     },
     {
@@ -84,6 +90,7 @@ export const DEFAULT_SETTINGS = {
     logoHeader: '/images/webspires.png',
     logoFooter: '/images/webspires-logo-light.png',
     ogImage: '/images/webspires-logo-icon.png',
+    favicon: '/favicon.ico',
 
     phone: '+44 161 524 1569',
     email: 'info@webspires.co.uk',
