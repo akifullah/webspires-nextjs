@@ -298,29 +298,7 @@ export default function Footer({ settings }) {
                             <p className="text-white font-bold text-[13px] mb-3">
                                 📬 Get Free Digital Marketing Tips
                             </p>
-                            <form
-                                onSubmit={(e) => e.preventDefault()}
-                                className="flex gap-2"
-                            >
-                                <input
-                                    id="footer-newsletter-email"
-                                    type="email"
-                                    placeholder="Your email address"
-                                    aria-label="Email for newsletter"
-                                    className="flex-1 min-w-0 px-3.5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-[13px] text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors duration-200"
-                                />
-                                <button
-                                    id="footer-newsletter-submit"
-                                    type="submit"
-                                    aria-label="Subscribe to newsletter"
-                                    className="flex-shrink-0 px-4 py-2.5 bg-primary hover:bg-primary/90 text-white text-[12px] font-bold rounded-lg transition-all duration-200 whitespace-nowrap"
-                                >
-                                    Subscribe
-                                </button>
-                            </form>
-                            <p className="text-[11px] text-gray-600 mt-2">
-                                No spam. Unsubscribe anytime.
-                            </p>
+                            <NewsletterForm source="Footer" />
                         </div>
                     </div>
                 </div>
