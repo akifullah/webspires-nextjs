@@ -15,6 +15,12 @@ const nextConfig = {
         hostname: 'webspires.co.uk',
         pathname: '/wp-content/uploads/**',
       },
+      {
+        // Cloudflare R2 media library (served via the custom domain).
+        protocol: 'https',
+        hostname: 'uploads.webspires.co.uk',
+        pathname: '/**',
+      },
     ],
   },
 

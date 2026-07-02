@@ -10,6 +10,7 @@ import {
     Briefcase,
     Inbox,
     Mail,
+    Image as ImageIcon,
     Users,
     Settings,
     ExternalLink,
@@ -25,6 +26,7 @@ const links = [
     { href: '/admin/posts/new', label: 'New Post', icon: PlusCircle },
     { href: '/admin/content', label: 'Site Content', icon: Database },
     { href: '/admin/content/projects', label: 'Projects', icon: Briefcase },
+    { href: '/admin/media', label: 'Media', icon: ImageIcon },
     { href: '/admin/users', label: 'Users', icon: Users },
     { href: '/admin/settings', label: 'Settings', icon: Settings },
 ];
