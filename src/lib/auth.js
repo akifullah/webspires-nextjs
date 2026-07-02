@@ -3,6 +3,7 @@ import { cache } from 'react';
 import { redirect } from 'next/navigation';
 import { timingSafeEqual } from 'node:crypto';
 import { getSession } from '@/lib/session';
+import { verifyUserCredentials } from '@/lib/users';
 
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
@@ -19,15 +20,31 @@ function safeEqual(a = '', b = '') {
     return timingSafeEqual(bufA, bufB);
 }
 
-export function validateCredentials(username, password) {
-    if (!ADMIN_USERNAME || !ADMIN_PASSWORD) {
-        throw new Error(
-            'ADMIN_USERNAME / ADMIN_PASSWORD are not configured in .env.local'
-        );
+/**
+ * Validate a login against BOTH the built-in env admin (always available,
+ * even if the DB is down) and the `users` table created from the admin.
+ * Returns true when either matches.
+ */
+export async function validateCredentials(username, password) {
+    // 1. Built-in env admin (bootstrap account).
+    if (
+        ADMIN_USERNAME &&
+        ADMIN_PASSWORD &&
+        safeEqual(username, ADMIN_USERNAME) &&
+        safeEqual(password, ADMIN_PASSWORD)
+    ) {
+        return true;
     }
-    const okUser = safeEqual(username, ADMIN_USERNAME);
-    const okPass = safeEqual(password, ADMIN_PASSWORD);
-    return okUser && okPass;
+
+    // 2. Database users. Guarded so a DB outage never breaks the env admin.
+    try {
+        const user = await verifyUserCredentials(username, password);
+        if (user) return true;
+    } catch {
+        // ignore DB errors here the env admin above still works
+    }
+
+    return false;
 }
 
 /**

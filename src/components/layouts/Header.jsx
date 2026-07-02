@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
+import { DEFAULT_SETTINGS, telHref } from '@/lib/settingsSchema'
 
 const navLinks = [
     {
@@ -54,7 +55,8 @@ const navLinks = [
     { label: 'Contact', href: '/contact', hasDropdown: false },
 ]
 
-const Header = () => {
+const Header = ({ settings }) => {
+    const s = settings || DEFAULT_SETTINGS
     const [scrolled, setScrolled] = useState(false)
     const [mobileOpen, setMobileOpen] = useState(false)
     const [activeDropdown, setActiveDropdown] = useState(null)
@@ -97,8 +99,8 @@ const Header = () => {
                         className="flex-shrink-0 flex items-center mr-4 xl:mr-6"
                     >
                         <Image
-                            src="/images/webspires.png"
-                            alt="Webspires"
+                            src={s.logoHeader || DEFAULT_SETTINGS.logoHeader}
+                            alt={s.siteName || 'Webspires'}
                             width={160}
                             height={48}
                             priority
@@ -182,7 +184,7 @@ const Header = () => {
                     <div className="hidden xl:flex items-center gap-2.5 ml-3 flex-shrink-0">
                         {/* Phone only on very wide screens to keep the bar uncluttered */}
                         <a
-                            href="tel:+441615241569"
+                            href={telHref(s.phone) || 'tel:+441615241569'}
                             aria-label="Call Webspires"
                             className="hidden 2xl:flex items-center gap-2 text-[13.5px] font-bold text-primary no-underline tracking-wide whitespace-nowrap transition-opacity duration-200 hover:opacity-80"
                         >
@@ -197,13 +199,13 @@ const Header = () => {
                                     fill="currentColor"
                                 />
                             </svg>
-                            <span>+44 161 524 1569</span>
+                            <span>{s.phone || DEFAULT_SETTINGS.phone}</span>
                         </a>
 
                         {/* Book a Call CTA */}
                         <a
                             id="header-book-call-btn"
-                            href="https://call.webspires.co.uk?utm_source=websiteheader"
+                            href={s.bookCallUrl || DEFAULT_SETTINGS.bookCallUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold text-[12.5px] tracking-wide px-4 py-2.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
@@ -332,9 +334,9 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <a href="tel:+441615241569"
+                            <a href={telHref(s.phone) || 'tel:+441615241569'}
                                 className="block py-3 px-1 text-[15px] font-semibold text-primary no-underline mt-2 transition-opacity duration-200 hover:opacity-80">
-                                📞 +44 161 524 1569
+                                📞 {s.phone || DEFAULT_SETTINGS.phone}
                             </a>
                         </li>
                     </ul>

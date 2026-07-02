@@ -1,97 +1,84 @@
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
+import { getSettings } from "@/lib/settings";
+import { socialList } from "@/lib/settingsSchema";
 
-/* ── JSON-LD Structured Data ────────────────────────────── */
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Webspires Limited",
-  url: "https://webspires.co.uk",
-  logo: "https://webspires.co.uk/images/webspires-logo-icon.png",
-  image: "https://webspires.co.uk/images/webspires-logo-icon.png",
-  description:
-    "UK's leading web design and digital marketing agency delivering high-performance websites, SEO, Google Ads, Meta Ads and social media services.",
-  address: {
+export default async function SiteLayout({ children }) {
+  const settings = await getSettings();
+
+  const sameAs = socialList(settings).map((s) => s.href);
+  const logoAbs = "https://webspires.co.uk/images/webspires-logo-icon.png";
+  const address = {
     "@type": "PostalAddress",
-    streetAddress: "39A Manchester Rd",
-    addressLocality: "Bolton",
-    postalCode: "BL3 2NZ",
-    addressCountry: "GB",
-  },
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+44-161-524-1569",
-    contactType: "customer support",
-    availableLanguage: ["English"],
-  },
-  sameAs: [
-    "https://facebook.com/webspires",
-    "https://instagram.com/webspires",
-    "https://linkedin.com/company/webspires",
-    "https://twitter.com/webspires",
-  ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5",
-    bestRating: "5",
-    worstRating: "1",
-    reviewCount: "45",
-  },
-};
+    streetAddress: settings.addressStreet,
+    addressLocality: settings.addressLocality,
+    postalCode: settings.addressPostalCode,
+    addressCountry: settings.addressCountry,
+  };
 
-const webSiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Webspires",
-  url: "https://webspires.co.uk",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: "https://webspires.co.uk/?s={search_term_string}",
-    "query-input": "required name=search_term_string",
-  },
-};
-
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://webspires.co.uk/#localbusiness",
-  name: "Webspires Limited",
-  image: "https://webspires.co.uk/images/webspires-logo-icon.png",
-  url: "https://webspires.co.uk",
-  telephone: "+44-161-524-1569",
-  email: "info@webspires.co.uk",
-  priceRange: "££",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "39A Manchester Rd",
-    addressLocality: "Bolton",
-    postalCode: "BL3 2NZ",
-    addressCountry: "GB",
-  },
-  areaServed: "GB",
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-      ],
-      opens: "09:00",
-      closes: "18:00",
+  /* ── JSON-LD Structured Data (fed by site settings) ─────── */
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Webspires Limited",
+    url: "https://webspires.co.uk",
+    logo: logoAbs,
+    image: logoAbs,
+    description:
+      "UK's leading web design and digital marketing agency delivering high-performance websites, SEO, Google Ads, Meta Ads and social media services.",
+    address,
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: settings.phone,
+      email: settings.email,
+      contactType: "customer support",
+      availableLanguage: ["English"],
     },
-  ],
-  sameAs: [
-    "https://facebook.com/webspires",
-    "https://instagram.com/webspires",
-    "https://linkedin.com/company/webspires",
-    "https://twitter.com/webspires",
-  ],
-};
+    sameAs,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5",
+      bestRating: "5",
+      worstRating: "1",
+      reviewCount: "45",
+    },
+  };
 
-export default function SiteLayout({ children }) {
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: settings.siteName || "Webspires",
+    url: "https://webspires.co.uk",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://webspires.co.uk/?s={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://webspires.co.uk/#localbusiness",
+    name: "Webspires Limited",
+    image: logoAbs,
+    url: "https://webspires.co.uk",
+    telephone: settings.phone,
+    email: settings.email,
+    priceRange: "££",
+    address,
+    areaServed: "GB",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+    ],
+    sameAs,
+  };
+
   return (
     <>
       {/* Inline JSON-LD safe in body, crawlers read it fine */}
@@ -122,11 +109,11 @@ export default function SiteLayout({ children }) {
         Skip to main content
       </a>
 
-      <Header />
+      <Header settings={settings} />
       <main id="main-content" className="flex flex-col flex-1">
         {children}
       </main>
-      <Footer />
+      <Footer settings={settings} />
     </>
   );
 }

@@ -8,7 +8,7 @@ export default async function DashboardLayout({ children }) {
         <div className="flex min-h-screen">
             <Sidebar username={admin.username} />
             <div className="flex-1 overflow-x-hidden">
-                <div className="mx-auto max-w-5xl px-6 py-8">{children}</div>
+                <div className="w-full px-6 py-8 lg:px-10">{children}</div>
             </div>
         </div>
     );
