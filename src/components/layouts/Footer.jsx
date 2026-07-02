@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { DEFAULT_SETTINGS, telHref } from '@/lib/settingsSchema'
+import NewsletterForm from '@/components/layouts/NewsletterForm'
 
 const services = [
     { label: 'CRM Development', href: '/services/crm-development' },

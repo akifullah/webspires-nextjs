@@ -9,6 +9,7 @@ import {
     Database,
     Briefcase,
     Inbox,
+    Mail,
     Users,
     Settings,
     ExternalLink,
@@ -19,6 +20,7 @@ import { logoutAction } from '@/app/actions/auth';
 const links = [
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
     { href: '/admin/inquiries', label: 'Inquiries', icon: Inbox },
+    { href: '/admin/newsletter', label: 'Newsletter', icon: Mail },
     { href: '/admin/posts', label: 'All Posts', icon: FileText },
     { href: '/admin/posts/new', label: 'New Post', icon: PlusCircle },
     { href: '/admin/content', label: 'Site Content', icon: Database },

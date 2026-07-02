@@ -51,10 +51,24 @@ create index if not exists inquiries_status_created_idx
   on public.inquiries (status, created_at desc);
 
 -- ============================================================
+--  newsletter_subscribers  (footer newsletter sign-ups)
+-- ============================================================
+create table if not exists public.newsletter_subscribers (
+  id          uuid primary key default gen_random_uuid(),
+  email       text not null unique,
+  source      text default 'Website',
+  created_at  timestamptz default now()
+);
+
+create index if not exists newsletter_created_idx
+  on public.newsletter_subscribers (created_at desc);
+
+-- ============================================================
 --  Row Level Security
 --  The app talks to these tables with the SERVICE ROLE key (RLS is
 --  bypassed by that key). We enable RLS with no policies so the public
 --  ANON key can never read/write them directly.
 -- ============================================================
-alter table public.users     enable row level security;
-alter table public.inquiries enable row level security;
+alter table public.users                 enable row level security;
+alter table public.inquiries             enable row level security;
+alter table public.newsletter_subscribers enable row level security;
