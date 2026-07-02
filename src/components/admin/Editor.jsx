@@ -19,6 +19,7 @@ import {
     Code,
     Link2,
     Image as ImageIcon,
+    ImagePlus,
     AlignLeft,
     AlignCenter,
     AlignRight,
@@ -26,6 +27,7 @@ import {
     Redo,
     Minus,
 } from 'lucide-react';
+import MediaPickerButton from '@/components/admin/MediaPickerButton';
 
 function Btn({ onClick, active, disabled, title, children }) {
     return (
@@ -288,12 +290,24 @@ export default function Editor({ value = '', onChange }) {
                     <Link2 size={16} />
                 </Btn>
                 <Btn
-                    title="Insert image"
+                    title="Upload image from computer"
                     disabled={uploading}
                     onClick={onPickImage}
                 >
                     <ImageIcon size={16} />
                 </Btn>
+                <MediaPickerButton
+                    multiple
+                    label=""
+                    title="Insert from Media library"
+                    icon={<ImagePlus size={16} />}
+                    className="flex h-8 w-8 items-center justify-center rounded-md text-slate-600 transition-colors hover:bg-slate-200"
+                    onSelect={(urls) =>
+                        urls.forEach((u) =>
+                            editor.chain().focus().setImage({ src: u }).run()
+                        )
+                    }
+                />
                 <Btn
                     title="Horizontal rule"
                     onClick={() =>

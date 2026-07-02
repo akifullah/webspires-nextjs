@@ -12,6 +12,7 @@ import {
 import { saveContentItem } from '@/app/actions/content';
 import { CONTENT_TYPES, slugify } from '@/lib/contentSchemas';
 import Editor from '@/components/admin/Editor';
+import MediaPickerButton from '@/components/admin/MediaPickerButton';
 
 const inputCls =
     'w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20';
@@ -206,6 +207,7 @@ function ImageField({ value, onChange }) {
                           ? 'Replace image'
                           : 'Upload image'}
                 </button>
+                <MediaPickerButton onSelect={(urls) => onChange(urls[0])} />
                 {value ? (
                     <button
                         type="button"
@@ -350,6 +352,10 @@ function ImageListField({ value, onChange }) {
                     <Upload size={15} />
                     {uploading ? 'Uploading…' : 'Upload images'}
                 </button>
+                <MediaPickerButton
+                    multiple
+                    onSelect={(urls) => onChange([...list, ...urls])}
+                />
                 <input
                     value={urlInput}
                     onChange={(e) => setUrlInput(e.target.value)}

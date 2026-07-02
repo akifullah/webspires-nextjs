@@ -1,8 +1,25 @@
 import { NextResponse } from 'next/server';
 import { getAdminOrNull } from '@/lib/auth';
-import { uploadToR2, isR2Configured } from '@/lib/r2';
+import { uploadToR2, isR2Configured, listR2Media } from '@/lib/r2';
 
 export const runtime = 'nodejs';
+
+// List media (used by the "Choose from Media" picker).
+export async function GET() {
+    const admin = await getAdminOrNull();
+    if (!admin) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    if (!isR2Configured()) {
+        return NextResponse.json({ items: [], configured: false });
+    }
+    try {
+        const items = await listR2Media();
+        return NextResponse.json({ items, configured: true });
+    } catch (err) {
+        return NextResponse.json({ error: err.message }, { status: 500 });
+    }
+}
 
 const MAX_BYTES = 50 * 1024 * 1024; // 50 MB
 const ALLOWED = {

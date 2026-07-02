@@ -856,6 +856,33 @@ export const CONTENT_TYPES = {
             },
         ],
     },
+    blogCategories: {
+        key: 'blogCategories',
+        label: 'Blog Categories',
+        singular: 'Category',
+        titleField: 'name',
+        slugRequired: true,
+        slugFromField: 'name',
+        basePath: null,
+        indexPath: '/blog',
+        dynamicPath: null,
+        fields: [
+            { name: 'name', label: 'Name', type: 'text', required: true },
+            {
+                name: 'description',
+                label: 'Description',
+                type: 'richtext',
+                hint: 'Optional. Rich text / HTML shown on the category — supports headings, links, lists and images.',
+            },
+            { name: 'color', label: 'Accent colour', type: 'color' },
+            { name: 'metaTitle', label: 'Meta title', type: 'text' },
+            {
+                name: 'metaDescription',
+                label: 'Meta description',
+                type: 'textarea',
+            },
+        ],
+    },
 };
 
 export const CONTENT_TYPE_KEYS = Object.keys(CONTENT_TYPES);

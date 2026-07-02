@@ -4,6 +4,7 @@ import { useState, useRef, useActionState } from 'react';
 import { Upload, Trash2, CheckCircle2, ChevronDown } from 'lucide-react';
 import { saveSettings } from '@/app/actions/settings';
 import { SETTINGS_SECTIONS, SOCIAL_PLATFORMS } from '@/lib/settingsSchema';
+import MediaPickerButton from '@/components/admin/MediaPickerButton';
 
 const inputCls =
     'w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20';
@@ -75,6 +76,11 @@ function ImageField({ value, onChange }) {
                         <Upload size={13} />
                         {uploading ? 'Uploading…' : value ? 'Replace' : 'Upload'}
                     </button>
+                    <MediaPickerButton
+                        onSelect={(urls) => onChange(urls[0])}
+                        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-50"
+                        label="Media"
+                    />
                     {value ? (
                         <button
                             type="button"
