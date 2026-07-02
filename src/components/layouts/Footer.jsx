@@ -318,7 +318,7 @@ export default function Footer({ settings }) {
                         {[
                             { label: 'Privacy Policy', href: '/privacy-policy' },
                             { label: 'Terms & Conditions', href: '/terms-conditions' },
-                            { label: 'Sitemap', href: '/sitemap.xml' },
+                            { label: 'Sitemap', href: '/sitemap' },
                         ].map((l) => (
                             <a
                                 key={l.label}

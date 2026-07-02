@@ -43,6 +43,7 @@ export default async function sitemap() {
         { path: '/contact', priority: 0.6, changeFrequency: 'yearly' },
         { path: '/privacy-policy', priority: 0.3, changeFrequency: 'yearly' },
         { path: '/terms-conditions', priority: 0.3, changeFrequency: 'yearly' },
+        { path: '/sitemap', priority: 0.3, changeFrequency: 'weekly' },
     ].map((r) => ({
         url: `${base}${r.path}`,
         lastModified: now,
