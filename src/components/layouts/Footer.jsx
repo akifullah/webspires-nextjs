@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { Mail } from 'lucide-react'
 import { DEFAULT_SETTINGS, telHref } from '@/lib/settingsSchema'
 import NewsletterForm from '@/components/layouts/NewsletterForm'
 
@@ -296,8 +297,8 @@ export default function Footer({ settings }) {
 
                         {/* Newsletter */}
                         <div>
-                            <p className="text-white font-bold text-[13px] mb-3">
-                                📬 Get Free Digital Marketing Tips
+                            <p className="flex items-center gap-1.5 text-white font-bold text-[13px] mb-3">
+                                <Mail size={14} className="flex-shrink-0" /> Get Free Digital Marketing Tips
                             </p>
                             <NewsletterForm source="Footer" />
                         </div>

@@ -337,8 +337,11 @@ const Header = ({ settings }) => {
                         </li>
                         <li>
                             <a href={telHref(s.phone) || 'tel:+441615241569'}
-                                className="block py-3 px-1 text-[15px] font-semibold text-primary no-underline mt-2 transition-opacity duration-200 hover:opacity-80">
-                                📞 {s.phone || DEFAULT_SETTINGS.phone}
+                                className="flex items-center gap-2 py-3 px-1 text-[15px] font-semibold text-primary no-underline mt-2 transition-opacity duration-200 hover:opacity-80">
+                                <svg className="w-[18px] h-[18px] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.01L6.62 10.79z" />
+                                </svg>
+                                {s.phone || DEFAULT_SETTINGS.phone}
                             </a>
                         </li>
                     </ul>

@@ -7,7 +7,7 @@ import { AnswerEngine, Eyebrow, CitationChip, EngineRow } from '@/components/ans
 const BOOK = 'https://call.webspires.co.uk?utm_source=geo';
 const CANONICAL = 'https://webspires.co.uk/services/generative-engine-optimisation/';
 // Absolute URL on the canonical domain so og:image is immune to the env-driven
-// metadataBase fallback (localhost in dev, vercel.app preview when unset).
+// metadataBase fallback (localhost in dev when NEXT_PUBLIC_BASE_URL is unset).
 const OG_IMAGE = 'https://webspires.co.uk/images/webspires-logo-icon.png';
 const PHONE = '+441615241569';
 const PHONE_LABEL = '+44 161 524 1569';
