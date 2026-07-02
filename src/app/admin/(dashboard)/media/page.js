@@ -16,5 +16,18 @@ export default async function MediaPage() {
         error = err.message;
     }
 
-    return <MediaManager items={items} error={error} />;
+    const usedBytes = items.reduce((sum, i) => sum + (i.size || 0), 0);
+    // R2 has no hard bucket cap; this is a display quota (defaults to the
+    // 10 GB free-tier storage allowance). Override with R2_QUOTA_GB.
+    const quotaGb = Number(process.env.R2_QUOTA_GB || 10);
+    const quotaBytes = quotaGb * 1024 * 1024 * 1024;
+
+    return (
+        <MediaManager
+            items={items}
+            error={error}
+            usedBytes={usedBytes}
+            quotaBytes={quotaBytes}
+        />
+    );
 }

@@ -62,6 +62,7 @@ export async function POST(request) {
             buffer: Buffer.from(bytes),
             contentType: file.type,
             ext,
+            originalName: file.name,
         });
         return NextResponse.json({ url, key });
     } catch (err) {

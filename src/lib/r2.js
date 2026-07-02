@@ -1,10 +1,10 @@
 import 'server-only';
-import crypto from 'node:crypto';
 import {
     S3Client,
     PutObjectCommand,
     ListObjectsV2Command,
     DeleteObjectCommand,
+    HeadObjectCommand,
 } from '@aws-sdk/client-s3';
 
 /*
@@ -68,13 +68,57 @@ export function r2PublicUrl(key) {
     return `${PUBLIC_BASE}/${key}`;
 }
 
-/** Upload a buffer and return { key, url }. */
-export async function uploadToR2({ buffer, contentType, ext }) {
+/** Sanitise an uploaded filename while keeping it recognisable. */
+function safeName(name = 'file') {
+    const cleaned = String(name)
+        .replace(/^.*[\\/]/, '') // strip any path
+        .replace(/\s+/g, '-') // spaces → dash
+        .replace(/[^A-Za-z0-9._-]/g, '') // drop unsafe chars
+        .replace(/^[.\-]+/, '') // no leading dot/dash
+        .slice(0, 200);
+    return cleaned || 'file';
+}
+
+async function keyExists(client, key) {
+    try {
+        await client.send(new HeadObjectCommand({ Bucket: BUCKET, Key: key }));
+        return true;
+    } catch (err) {
+        const code = err?.$metadata?.httpStatusCode;
+        if (
+            code === 404 ||
+            err?.name === 'NotFound' ||
+            err?.name === 'NoSuchKey'
+        ) {
+            return false;
+        }
+        throw err;
+    }
+}
+
+/**
+ * Upload a buffer, KEEPING the original filename. If a file with the same
+ * name already exists, a numeric suffix is added (name-1.png) so nothing is
+ * silently overwritten. Returns { key, url }.
+ */
+export async function uploadToR2({ buffer, contentType, ext, originalName }) {
     const client = getR2();
-    const name = `${Date.now()}-${crypto
-        .randomBytes(6)
-        .toString('hex')}.${ext}`;
-    const key = `${PREFIX}${name}`;
+
+    let base = safeName(originalName);
+    // Guarantee an extension (fall back to the mime-derived one).
+    if (!/\.[A-Za-z0-9]+$/.test(base) && ext) base = `${base}.${ext}`;
+
+    const dot = base.lastIndexOf('.');
+    const stem = dot > 0 ? base.slice(0, dot) : base;
+    const extPart = dot > 0 ? base.slice(dot) : '';
+
+    let key = `${PREFIX}${stem}${extPart}`;
+    let n = 1;
+    while (await keyExists(client, key)) {
+        key = `${PREFIX}${stem}-${n}${extPart}`;
+        n += 1;
+    }
+
     await client.send(
         new PutObjectCommand({
             Bucket: BUCKET,
