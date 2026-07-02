@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useActionState } from 'react';
-import { Upload, Trash2, CheckCircle2 } from 'lucide-react';
+import { Upload, Trash2, CheckCircle2, ChevronDown } from 'lucide-react';
 import { saveSettings } from '@/app/actions/settings';
 import { SETTINGS_SECTIONS, SOCIAL_PLATFORMS } from '@/lib/settingsSchema';
 
@@ -20,7 +20,7 @@ function Field({ label, hint, children }) {
     );
 }
 
-/* Image field: upload to /api/admin/upload or paste a URL, with preview. */
+/* Image field: upload to /api/admin/upload or paste a URL, with a small preview. */
 function ImageField({ value, onChange }) {
     const [uploading, setUploading] = useState(false);
     const [err, setErr] = useState('');
@@ -50,39 +50,41 @@ function ImageField({ value, onChange }) {
     };
 
     return (
-        <div className="space-y-3">
-            {value ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                    src={value}
-                    alt="Preview"
-                    className="h-16 w-auto max-w-[160px] rounded-lg border border-slate-200 bg-slate-50 object-contain p-1.5"
-                />
-            ) : (
-                <div className="flex h-16 w-full max-w-[160px] items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 text-xs text-slate-400">
-                    No image
-                </div>
-            )}
-
-            <div className="flex flex-wrap items-center gap-2">
-                <button
-                    type="button"
-                    onClick={() => inputRef.current?.click()}
-                    disabled={uploading}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3.5 py-2 text-sm font-bold text-white hover:opacity-90 disabled:opacity-60"
-                >
-                    <Upload size={15} />
-                    {uploading ? 'Uploading…' : value ? 'Replace' : 'Upload'}
-                </button>
+        <div className="space-y-2.5">
+            <div className="flex items-center gap-3">
                 {value ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                        src={value}
+                        alt="Preview"
+                        className="h-12 w-12 shrink-0 rounded-lg border border-slate-200 bg-slate-50 object-contain p-1"
+                    />
+                ) : (
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 text-[10px] text-slate-400">
+                        None
+                    </div>
+                )}
+
+                <div className="flex flex-wrap items-center gap-2">
                     <button
                         type="button"
-                        onClick={() => onChange('')}
-                        className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3.5 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+                        onClick={() => inputRef.current?.click()}
+                        disabled={uploading}
+                        className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-bold text-white hover:opacity-90 disabled:opacity-60"
                     >
-                        <Trash2 size={15} /> Remove
+                        <Upload size={13} />
+                        {uploading ? 'Uploading…' : value ? 'Replace' : 'Upload'}
                     </button>
-                ) : null}
+                    {value ? (
+                        <button
+                            type="button"
+                            onClick={() => onChange('')}
+                            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-50"
+                        >
+                            <Trash2 size={13} /> Remove
+                        </button>
+                    ) : null}
+                </div>
             </div>
 
             <input
@@ -109,6 +111,12 @@ export default function SettingsForm({ settings }) {
     const [values, setValues] = useState(() => ({ ...settings }));
     const [social, setSocial] = useState(() => ({ ...(settings.social || {}) }));
 
+    // Accordion: open the first section by default.
+    const [open, setOpen] = useState(() => ({
+        [SETTINGS_SECTIONS[0]?.title]: true,
+    }));
+    const toggle = (title) => setOpen((o) => ({ ...o, [title]: !o[title] }));
+
     const setField = (name, val) =>
         setValues((v) => ({ ...v, [name]: val }));
     const setSocialField = (key, val) =>
@@ -116,8 +124,84 @@ export default function SettingsForm({ settings }) {
 
     const payload = JSON.stringify({ ...values, social });
 
+    const renderField = (f) => (
+        <Field key={f.name} label={f.label} hint={f.hint}>
+            {f.type === 'image' ? (
+                <ImageField
+                    value={values[f.name]}
+                    onChange={(url) => setField(f.name, url)}
+                />
+            ) : f.type === 'textarea' ? (
+                <textarea
+                    value={values[f.name] || ''}
+                    onChange={(e) => setField(f.name, e.target.value)}
+                    rows={3}
+                    className={inputCls}
+                />
+            ) : f.type === 'number' ? (
+                <input
+                    type="number"
+                    min="12"
+                    max="80"
+                    value={values[f.name] || ''}
+                    onChange={(e) => setField(f.name, e.target.value)}
+                    className={inputCls}
+                />
+            ) : (
+                <input
+                    value={values[f.name] || ''}
+                    onChange={(e) => setField(f.name, e.target.value)}
+                    className={inputCls}
+                />
+            )}
+        </Field>
+    );
+
+    // Sections + a synthetic "Social links" panel, all rendered as accordions.
+    const panels = [
+        ...SETTINGS_SECTIONS.map((s) => ({
+            title: s.title,
+            grid: s.grid,
+            count: s.fields.length,
+            body: (
+                <div
+                    className={
+                        s.grid ? 'grid gap-4 sm:grid-cols-2' : 'space-y-5'
+                    }
+                >
+                    {s.fields.map(renderField)}
+                </div>
+            ),
+        })),
+        {
+            title: 'Social links',
+            count: SOCIAL_PLATFORMS.length,
+            body: (
+                <div className="space-y-3">
+                    <p className="text-xs text-slate-400">
+                        Leave a field blank to hide that icon in the footer.
+                    </p>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                        {SOCIAL_PLATFORMS.map((p) => (
+                            <Field key={p.key} label={p.label}>
+                                <input
+                                    value={social[p.key] || ''}
+                                    onChange={(e) =>
+                                        setSocialField(p.key, e.target.value)
+                                    }
+                                    placeholder={p.placeholder}
+                                    className={inputCls}
+                                />
+                            </Field>
+                        ))}
+                    </div>
+                </div>
+            ),
+        },
+    ];
+
     return (
-        <form action={action} className="space-y-6">
+        <form action={action} className="space-y-4">
             <input type="hidden" name="data" value={payload} />
 
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -156,69 +240,41 @@ export default function SettingsForm({ settings }) {
                 </p>
             )}
 
-            {SETTINGS_SECTIONS.map((section) => (
-                <div
-                    key={section.title}
-                    className="space-y-5 rounded-2xl border border-slate-200 bg-white p-5"
-                >
-                    <h2 className="text-sm font-extrabold uppercase tracking-wide text-slate-700">
-                        {section.title}
-                    </h2>
-                    {section.fields.map((f) => (
-                        <Field key={f.name} label={f.label} hint={f.hint}>
-                            {f.type === 'image' ? (
-                                <ImageField
-                                    value={values[f.name]}
-                                    onChange={(url) => setField(f.name, url)}
-                                />
-                            ) : f.type === 'textarea' ? (
-                                <textarea
-                                    value={values[f.name] || ''}
-                                    onChange={(e) =>
-                                        setField(f.name, e.target.value)
-                                    }
-                                    rows={3}
-                                    className={inputCls}
-                                />
-                            ) : (
-                                <input
-                                    value={values[f.name] || ''}
-                                    onChange={(e) =>
-                                        setField(f.name, e.target.value)
-                                    }
-                                    className={inputCls}
-                                />
-                            )}
-                        </Field>
-                    ))}
-                </div>
-            ))}
-
-            {/* Social links */}
-            <div className="space-y-5 rounded-2xl border border-slate-200 bg-white p-5">
-                <div>
-                    <h2 className="text-sm font-extrabold uppercase tracking-wide text-slate-700">
-                        Social links
-                    </h2>
-                    <p className="mt-1 text-xs text-slate-400">
-                        Leave a field blank to hide that icon in the footer.
-                    </p>
-                </div>
-                <div className="grid gap-4 sm:grid-cols-2">
-                    {SOCIAL_PLATFORMS.map((p) => (
-                        <Field key={p.key} label={p.label}>
-                            <input
-                                value={social[p.key] || ''}
-                                onChange={(e) =>
-                                    setSocialField(p.key, e.target.value)
-                                }
-                                placeholder={p.placeholder}
-                                className={inputCls}
+            {panels.map((panel) => {
+                const isOpen = Boolean(open[panel.title]);
+                return (
+                    <div
+                        key={panel.title}
+                        className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
+                    >
+                        <button
+                            type="button"
+                            onClick={() => toggle(panel.title)}
+                            aria-expanded={isOpen}
+                            className="flex w-full items-center justify-between px-5 py-4 text-left hover:bg-slate-50"
+                        >
+                            <span className="text-sm font-extrabold uppercase tracking-wide text-slate-700">
+                                {panel.title}
+                                <span className="ml-2 text-xs font-normal normal-case text-slate-400">
+                                    {panel.count} field
+                                    {panel.count !== 1 ? 's' : ''}
+                                </span>
+                            </span>
+                            <ChevronDown
+                                size={18}
+                                className={`text-slate-400 transition-transform ${
+                                    isOpen ? 'rotate-180' : ''
+                                }`}
                             />
-                        </Field>
-                    ))}
-                </div>
-            </div>
+                        </button>
+                        {isOpen ? (
+                            <div className="border-t border-slate-100 px-5 py-5">
+                                {panel.body}
+                            </div>
+                        ) : null}
+                    </div>
+                );
+            })}
 
             <div className="flex justify-end">
                 <button

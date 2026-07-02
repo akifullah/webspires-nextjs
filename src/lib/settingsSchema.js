@@ -53,6 +53,36 @@ export const SETTINGS_SECTIONS = [
         ],
     },
     {
+        title: 'Header logo size (height in pixels)',
+        grid: true,
+        fields: [
+            {
+                name: 'logoHeightMobile',
+                label: 'Mobile',
+                type: 'number',
+                hint: 'Phones (default). Try 28–40.',
+            },
+            {
+                name: 'logoHeightTablet',
+                label: 'Tablet (≥ 768px)',
+                type: 'number',
+                hint: 'Try 32–48.',
+            },
+            {
+                name: 'logoHeightLaptop',
+                label: 'Laptop / desktop (≥ 1024px)',
+                type: 'number',
+                hint: 'Try 32–52.',
+            },
+            {
+                name: 'logoHeightLarge',
+                label: 'Large screen (≥ 1536px)',
+                type: 'number',
+                hint: 'Try 36–60.',
+            },
+        ],
+    },
+    {
         title: 'Contact details',
         fields: [
             { name: 'phone', label: 'Phone (display)', type: 'text', hint: 'e.g. +44 161 524 1569' },
@@ -91,6 +121,11 @@ export const DEFAULT_SETTINGS = {
     logoFooter: '/images/webspires-logo-light.png',
     ogImage: '/images/webspires-logo-icon.png',
     favicon: '/favicon.ico',
+
+    logoHeightMobile: '36',
+    logoHeightTablet: '36',
+    logoHeightLaptop: '36',
+    logoHeightLarge: '40',
 
     phone: '+44 161 524 1569',
     email: 'info@webspires.co.uk',
@@ -136,6 +171,31 @@ export function cleanSettings(raw = {}) {
     }
     out.social = social;
     return out;
+}
+
+/** Clamp a pixel value to a safe header range, falling back to `fallback`. */
+function clampPx(value, fallback) {
+    const n = parseInt(value, 10);
+    if (!Number.isFinite(n)) return fallback;
+    return Math.min(80, Math.max(12, n));
+}
+
+/**
+ * Responsive CSS for the header logo height. Applied via a <style> block in
+ * the header (Tailwind can't emit arbitrary runtime values). Breakpoints:
+ * mobile (default), tablet ≥768px, laptop ≥1024px, large ≥1536px.
+ */
+export function headerLogoCss(settings, selector = '.site-header-logo') {
+    const m = clampPx(settings?.logoHeightMobile, 36);
+    const t = clampPx(settings?.logoHeightTablet, m);
+    const l = clampPx(settings?.logoHeightLaptop, t);
+    const xl = clampPx(settings?.logoHeightLarge, l);
+    return (
+        `${selector}{height:${m}px;width:auto}` +
+        `@media(min-width:768px){${selector}{height:${t}px}}` +
+        `@media(min-width:1024px){${selector}{height:${l}px}}` +
+        `@media(min-width:1536px){${selector}{height:${xl}px}}`
+    );
 }
 
 /** Build a `tel:` href from a display phone number. */

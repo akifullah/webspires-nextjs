@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
-import { DEFAULT_SETTINGS, telHref } from '@/lib/settingsSchema'
+import { DEFAULT_SETTINGS, telHref, headerLogoCss } from '@/lib/settingsSchema'
 
 const navLinks = [
     {
@@ -82,6 +82,8 @@ const Header = ({ settings }) => {
 
     return (
         <>
+            {/* Admin-controlled responsive logo height (mobile/tablet/laptop/large). */}
+            <style dangerouslySetInnerHTML={{ __html: headerLogoCss(s) }} />
             <header
                 role="banner"
                 className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${scrolled
@@ -104,7 +106,7 @@ const Header = ({ settings }) => {
                             width={160}
                             height={48}
                             priority
-                            className="h-9 w-auto max-w-[150px] object-contain"
+                            className="site-header-logo w-auto max-w-[260px] object-contain"
                         />
                     </Link>
 
