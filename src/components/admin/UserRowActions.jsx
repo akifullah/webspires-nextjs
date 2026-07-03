@@ -3,10 +3,17 @@
 import { Trash2 } from 'lucide-react';
 import { deleteUserAction } from '@/app/actions/users';
 
-export default function UserRowActions({ user, isSelf }) {
+export default function UserRowActions({ user, isSelf, isProtected }) {
     if (isSelf) {
         return (
             <span className="text-xs font-medium text-slate-400">You</span>
+        );
+    }
+    if (isProtected) {
+        return (
+            <span className="text-xs font-medium text-slate-400">
+                Protected
+            </span>
         );
     }
     return (

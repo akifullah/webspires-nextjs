@@ -5,6 +5,9 @@ import { hashPassword, verifyPassword } from '@/lib/password';
 /* Admin users stored in the `users` table. Passwords are scrypt-hashed;
    the plain password is never stored or returned. */
 
+/** Usernames that can never be deleted, regardless of who asks. */
+export const PROTECTED_USERNAMES = new Set(['webspires']);
+
 function serialize(row) {
     if (!row) return null;
     return {
@@ -82,6 +85,14 @@ export async function createUser({ username, password, name = '', role = 'admin'
 export async function deleteUser(id) {
     if (!isValidId(id)) return;
     const supabase = getSupabase();
+    const { data: row } = await supabase
+        .from('users')
+        .select('username')
+        .eq('id', id)
+        .maybeSingle();
+    if (row && PROTECTED_USERNAMES.has(String(row.username).toLowerCase())) {
+        return;
+    }
     await supabase.from('users').delete().eq('id', id);
 }
 

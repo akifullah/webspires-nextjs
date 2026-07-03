@@ -1,5 +1,5 @@
 import { requireAdmin } from '@/lib/auth';
-import { listUsers } from '@/lib/users';
+import { listUsers, PROTECTED_USERNAMES } from '@/lib/users';
 import UserCreateForm from '@/components/admin/UserCreateForm';
 import UserRowActions from '@/components/admin/UserRowActions';
 import DbErrorNotice from '@/components/admin/DbErrorNotice';
@@ -86,6 +86,9 @@ export default async function UsersPage() {
                                                         u.username ===
                                                         admin.username
                                                     }
+                                                    isProtected={PROTECTED_USERNAMES.has(
+                                                        u.username.toLowerCase()
+                                                    )}
                                                 />
                                             </div>
                                         </td>
