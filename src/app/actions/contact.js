@@ -1,6 +1,6 @@
 'use server';
 
-import { sendContactEmail } from '@/lib/mailer';
+import { sendContactEmail, sendEnquiryConfirmation } from '@/lib/mailer';
 import { createInquiry } from '@/lib/inquiries';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -85,6 +85,13 @@ export async function submitContact(_prevState, formData) {
                     'Sorry, we could not send your message right now. Please email us directly at info@webspires.co.uk.',
             };
         }
+    }
+
+    // Auto-reply to the enquirer (best effort — never blocks the submission).
+    try {
+        await sendEnquiryConfirmation({ name, email, message });
+    } catch (err) {
+        console.error('Enquiry confirmation email failed:', err);
     }
 
     return { success: true };

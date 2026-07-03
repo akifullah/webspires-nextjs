@@ -95,8 +95,12 @@ function renderShell({ preheader, badge, heading, subheading, bodyHtml, cta }) {
             <td style="background:${BRAND.dark};padding:28px 40px">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td style="font-size:22px;font-weight:800;color:#ffffff;letter-spacing:-0.5px">
-                    Webspires<span style="color:${BRAND.primary}">.</span>
+                  <td>
+                    <a href="https://webspires.co.uk" style="text-decoration:none">
+                      <img src="https://webspires.co.uk/images/webspires-logo-light.png"
+                           alt="Webspires" width="171" height="60"
+                           style="display:block;width:171px;height:60px;border:0" />
+                    </a>
                   </td>
                   <td align="right">
                     <span style="display:inline-block;background:rgba(238,49,79,0.15);border:1px solid rgba(238,49,79,0.45);color:#ff8fa2;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:999px">
@@ -264,6 +268,70 @@ export async function sendContactEmail({
 
     const transporter = getTransporter(cfg);
     await transporter.sendMail(mail);
+    return { ok: true };
+}
+
+/**
+ * Auto-reply sent to the person who submitted an enquiry. Replies and
+ * follow-ups are directed to info@webspires.co.uk.
+ * @returns {Promise<{ok:true}>}
+ */
+export async function sendEnquiryConfirmation({ name, email, message }) {
+    const cfg = getConfig();
+    if (cfg.missing.length) {
+        throw new Error(
+            `Email is not configured. Missing env: ${cfg.missing.join(', ')}`
+        );
+    }
+
+    const firstName = String(name || '').trim().split(/\s+/)[0] || 'there';
+
+    const bodyHtml = `
+        <p style="margin:0 0 18px;font-size:14px;line-height:1.7;color:${BRAND.text}">
+          Thanks for getting in touch — your message has reached our team and
+          we'll get back to you as soon as possible, usually within one
+          business day.
+        </p>
+        <h3 style="margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:${BRAND.faint}">Your message</h3>
+        <div style="background:${BRAND.soft};border:1px solid ${BRAND.border};border-left:4px solid ${BRAND.primary};border-radius:0 12px 12px 0;padding:18px 20px;font-size:14px;line-height:1.7;color:${BRAND.text};white-space:pre-wrap">${esc(
+            message
+        )}</div>
+        <p style="margin:22px 0 0;font-size:14px;line-height:1.7;color:${BRAND.muted}">
+          Need to add anything or reach us sooner? Just reply to this email or
+          write to
+          <a href="mailto:info@webspires.co.uk" style="color:${BRAND.primary};font-weight:600;text-decoration:none">info@webspires.co.uk</a>.
+        </p>`;
+
+    const html = renderShell({
+        preheader:
+            'Thanks for contacting Webspires — we have received your message and will reply shortly.',
+        badge: 'Message Received',
+        heading: `Thanks, ${firstName} — we've got your message`,
+        subheading: 'This is a quick confirmation that your enquiry arrived safely.',
+        bodyHtml,
+        cta: {
+            label: 'Contact Webspires',
+            href: 'mailto:info@webspires.co.uk',
+        },
+    });
+
+    const text =
+        `Hi ${firstName},\n\n` +
+        `Thanks for getting in touch with Webspires. Your message has reached our team ` +
+        `and we'll get back to you as soon as possible, usually within one business day.\n\n` +
+        `Your message:\n${message}\n\n` +
+        `Need to add anything or reach us sooner? Reply to this email or write to info@webspires.co.uk.\n\n` +
+        `— The Webspires team\nhttps://webspires.co.uk`;
+
+    const transporter = getTransporter(cfg);
+    await transporter.sendMail({
+        from: cfg.from,
+        to: `${name} <${email}>`,
+        replyTo: 'Webspires <info@webspires.co.uk>',
+        subject: "We've received your enquiry — Webspires",
+        text,
+        html,
+    });
     return { ok: true };
 }
 
