@@ -1,5 +1,7 @@
 import { Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import GoogleTagManager from "@/components/analytics/GoogleTagManager";
+import GoogleTagManagerNoScript from "@/components/analytics/GoogleTagManagerNoScript";
 import { generateSEO } from "@/lib/seo";
 import { getSettings } from "@/lib/settings";
 
@@ -117,6 +119,12 @@ export default function RootLayout({ children }) {
         className="min-h-full flex flex-col antialiased"
         cz-shortcut-listen="true"
       >
+        {/* GTM <noscript> — must be the first thing inside <body> */}
+        <GoogleTagManagerNoScript />
+
+        {/* GTM loader + SPA pageview tracking (afterInteractive) */}
+        <GoogleTagManager />
+
         {children}
       </body>
     </html>

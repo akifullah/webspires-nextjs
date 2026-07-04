@@ -116,8 +116,11 @@ export default async function SiteLayout({ children }) {
       </main>
       <Footer settings={settings} />
 
-      {/* Smartlook session recording (EU region) — public site only, not admin */}
-      <Script id="smartlook" strategy="afterInteractive">
+      {/* Smartlook session recording (EU region) — public site only, not admin.
+          NOTE: id must NOT be "smartlook" — an element id becomes window[id],
+          which would shadow the snippet's `window.smartlook` guard and stop the
+          recorder from ever loading. */}
+      <Script id="smartlook-loader" strategy="afterInteractive">
         {`
           window.smartlook||(function(d) {
             var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
