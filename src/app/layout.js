@@ -1,4 +1,5 @@
 import { Geist, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { generateSEO } from "@/lib/seo";
 import { getSettings } from "@/lib/settings";
@@ -118,6 +119,18 @@ export default function RootLayout({ children }) {
         cz-shortcut-listen="true"
       >
         {children}
+
+        {/* Smartlook session recording (EU region) — loads site-wide */}
+        <Script id="smartlook" strategy="afterInteractive">
+          {`
+            window.smartlook||(function(d) {
+              var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+              var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+              c.charset='utf-8';c.src='https://web-sdk.smartlook.com/recorder.js';h.appendChild(c);
+              })(document);
+              smartlook('init', 'd9766f213289b0be8e8908cd87828726993964ef', { region: 'eu' });
+          `}
+        </Script>
       </body>
     </html>
   );
