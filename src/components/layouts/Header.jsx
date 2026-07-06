@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect, useRef } from 'react'
+import { DEFAULT_SETTINGS, telHref, headerLogoCss } from '@/lib/settingsSchema'
 
 const navLinks = [
     {
@@ -54,7 +55,8 @@ const navLinks = [
     { label: 'Contact', href: '/contact', hasDropdown: false },
 ]
 
-const Header = () => {
+const Header = ({ settings }) => {
+    const s = settings || DEFAULT_SETTINGS
     const [scrolled, setScrolled] = useState(false)
     const [mobileOpen, setMobileOpen] = useState(false)
     const [activeDropdown, setActiveDropdown] = useState(null)
@@ -80,6 +82,8 @@ const Header = () => {
 
     return (
         <>
+            {/* Admin-controlled responsive logo height (mobile/tablet/laptop/large). */}
+            <style dangerouslySetInnerHTML={{ __html: headerLogoCss(s) }} />
             <header
                 role="banner"
                 className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${scrolled
@@ -97,12 +101,12 @@ const Header = () => {
                         className="flex-shrink-0 flex items-center mr-4 xl:mr-6"
                     >
                         <Image
-                            src="/images/webspires.png"
-                            alt="Webspires"
+                            src={s.logoHeader || DEFAULT_SETTINGS.logoHeader}
+                            alt={s.siteName || 'Webspires'}
                             width={160}
                             height={48}
                             priority
-                            className="h-9 w-auto max-w-[150px] object-contain"
+                            className="site-header-logo w-auto max-w-[260px] object-contain"
                         />
                     </Link>
 
@@ -182,7 +186,7 @@ const Header = () => {
                     <div className="hidden xl:flex items-center gap-2.5 ml-3 flex-shrink-0">
                         {/* Phone only on very wide screens to keep the bar uncluttered */}
                         <a
-                            href="tel:+441615241569"
+                            href={telHref(s.phone) || 'tel:+441615241569'}
                             aria-label="Call Webspires"
                             className="hidden 2xl:flex items-center gap-2 text-[13.5px] font-bold text-primary no-underline tracking-wide whitespace-nowrap transition-opacity duration-200 hover:opacity-80"
                         >
@@ -197,13 +201,13 @@ const Header = () => {
                                     fill="currentColor"
                                 />
                             </svg>
-                            <span>+44 161 524 1569</span>
+                            <span>{s.phone || DEFAULT_SETTINGS.phone}</span>
                         </a>
 
                         {/* Book a Call CTA */}
                         <a
                             id="header-book-call-btn"
-                            href="https://call.webspires.co.uk?utm_source=websiteheader"
+                            href={s.bookCallUrl || DEFAULT_SETTINGS.bookCallUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold text-[12.5px] tracking-wide px-4 py-2.5 rounded-lg transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap"
@@ -332,9 +336,12 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <a href="tel:+441615241569"
-                                className="block py-3 px-1 text-[15px] font-semibold text-primary no-underline mt-2 transition-opacity duration-200 hover:opacity-80">
-                                📞 +44 161 524 1569
+                            <a href={telHref(s.phone) || 'tel:+441615241569'}
+                                className="flex items-center gap-2 py-3 px-1 text-[15px] font-semibold text-primary no-underline mt-2 transition-opacity duration-200 hover:opacity-80">
+                                <svg className="w-[18px] h-[18px] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.01L6.62 10.79z" />
+                                </svg>
+                                {s.phone || DEFAULT_SETTINGS.phone}
                             </a>
                         </li>
                     </ul>

@@ -1,6 +1,7 @@
 'use server';
 
-import { sendContactEmail } from '@/lib/mailer';
+import { sendContactEmail, sendEnquiryConfirmation } from '@/lib/mailer';
+import { createInquiry } from '@/lib/inquiries';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_ATTACH = 10 * 1024 * 1024; // 10 MB
@@ -53,6 +54,18 @@ export async function submitContact(_prevState, formData) {
         };
     }
 
+    // Save to the database first this is what the admin "Inquiries" page
+    // reads. It's the source of truth, so a successful save means success even
+    // if the notification email later fails.
+    let saved = false;
+    try {
+        await createInquiry({ name, email, phone, service, message, source });
+        saved = true;
+    } catch (err) {
+        console.error('Inquiry save failed:', err);
+    }
+
+    // Send the notification email (best effort). Attachments only go by email.
     try {
         await sendContactEmail({
             name,
@@ -65,10 +78,20 @@ export async function submitContact(_prevState, formData) {
         });
     } catch (err) {
         console.error('Contact email failed:', err);
-        return {
-            error:
-                'Sorry, we could not send your message right now. Please email us directly at info@webspires.co.uk.',
-        };
+        // Only surface an error if we also failed to persist the inquiry.
+        if (!saved) {
+            return {
+                error:
+                    'Sorry, we could not send your message right now. Please email us directly at info@webspires.co.uk.',
+            };
+        }
+    }
+
+    // Auto-reply to the enquirer (best effort — never blocks the submission).
+    try {
+        await sendEnquiryConfirmation({ name, email, message });
+    } catch (err) {
+        console.error('Enquiry confirmation email failed:', err);
     }
 
     return { success: true };

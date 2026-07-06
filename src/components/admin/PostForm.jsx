@@ -3,6 +3,7 @@
 import { useState, useActionState } from 'react';
 import { ChevronDown, UploadCloud, Plus, Trash2 } from 'lucide-react';
 import Editor from '@/components/admin/Editor';
+import MediaPickerButton from '@/components/admin/MediaPickerButton';
 import { savePost } from '@/app/actions/posts';
 
 function Field({ label, hint, children }) {
@@ -20,7 +21,7 @@ function Field({ label, hint, children }) {
 const inputCls =
     'w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20';
 
-export default function PostForm({ post = null }) {
+export default function PostForm({ post = null, categories = [] }) {
     const isEdit = Boolean(post);
     const [state, action, pending] = useActionState(savePost, null);
 
@@ -217,6 +218,12 @@ export default function PostForm({ post = null }) {
                                 onChange={uploadCover}
                             />
                         </label>
+                        <div className="mt-2">
+                            <MediaPickerButton
+                                onSelect={(urls) => setCover(urls[0])}
+                                className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+                            />
+                        </div>
                         {cover && (
                             <button
                                 type="button"
@@ -235,12 +242,22 @@ export default function PostForm({ post = null }) {
                     </div>
 
                     <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-5">
-                        <Field label="Category">
+                        <Field
+                            label="Category"
+                            hint="Pick a managed category or type a new one. Manage the list under Categories."
+                        >
                             <input
                                 name="category"
                                 defaultValue={post?.category || 'General'}
+                                list="post-category-options"
+                                autoComplete="off"
                                 className={inputCls}
                             />
+                            <datalist id="post-category-options">
+                                {categories.map((c) => (
+                                    <option key={c} value={c} />
+                                ))}
+                            </datalist>
                         </Field>
                         <Field label="Tags" hint="Comma separated">
                             <input
@@ -355,6 +372,12 @@ export default function PostForm({ post = null }) {
                                     onChange={uploadOg}
                                 />
                             </label>
+                            <div className="mt-2">
+                                <MediaPickerButton
+                                    onSelect={(urls) => setOgImage(urls[0])}
+                                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+                                />
+                            </div>
                             {ogImage && (
                                 <button
                                     type="button"

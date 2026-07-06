@@ -15,7 +15,7 @@ export async function loginAction(_prevState, formData) {
 
     let ok = false;
     try {
-        ok = validateCredentials(username, password);
+        ok = await validateCredentials(username, password);
     } catch (err) {
         return { error: err.message };
     }

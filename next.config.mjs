@@ -1,3 +1,5 @@
+import { withSentryConfig } from "@sentry/nextjs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Compress responses
@@ -14,6 +16,12 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'webspires.co.uk',
         pathname: '/wp-content/uploads/**',
+      },
+      {
+        // Cloudflare R2 media library (served via the custom domain).
+        protocol: 'https',
+        hostname: 'uploads.webspires.co.uk',
+        pathname: '/**',
       },
     ],
   },
@@ -118,4 +126,29 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  // Sentry org/project for source map upload (from the wizard invocation).
+  org: "webspires-ltd",
+  project: "webspires-nextjs",
+
+  // Source maps are uploaded at build time only when SENTRY_AUTH_TOKEN is set
+  // in the build environment (e.g. Vercel). Missing token => upload is skipped,
+  // it does not fail the build.
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+
+  // Only print logs for uploading source maps in CI.
+  silent: !process.env.CI,
+
+  // Upload a larger set of source maps for prettier stack traces (increases build time).
+  widenClientFileUpload: true,
+
+  // Route Sentry requests through /monitoring to bypass ad-blockers.
+  tunnelRoute: "/monitoring",
+
+  // Automatically tree-shake Sentry logger statements to reduce bundle size.
+  webpack: {
+    treeshake: {
+      removeDebugLogging: true,
+    },
+  },
+});

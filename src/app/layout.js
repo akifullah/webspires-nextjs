@@ -1,6 +1,9 @@
 import { Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import GoogleTagManager from "@/components/analytics/GoogleTagManager";
+import GoogleTagManagerNoScript from "@/components/analytics/GoogleTagManagerNoScript";
 import { generateSEO } from "@/lib/seo";
+import { getSettings } from "@/lib/settings";
 
 /* ── Fonts ─────────────────────────────────────────────── */
 // Geist stays as the fallback for display/body until the self-hosted
@@ -28,65 +31,85 @@ export const viewport = {
 };
 
 /* ── Page Metadata ──────────────────────────────────────── */
-export const metadata = {
-  ...generateSEO({ path: "/" }),
+// Async so the social-share / preview image (and site name) can be driven by
+// the admin Settings page. Falls back to the built-in defaults on any error.
+export async function generateMetadata() {
+  let siteName = "Webspires";
+  let previewImage = "/images/webspires-logo-icon.png";
+  let favicon = "/favicon.ico";
+  try {
+    const settings = await getSettings();
+    siteName = settings.siteName || siteName;
+    previewImage = settings.ogImage || previewImage;
+    favicon = settings.favicon || favicon;
+  } catch {
+    // keep defaults
+  }
 
-  title: {
-    default: "Best Web Design Agency UK | Webspires Limited",
-    template: "%s | Webspires",
-  },
-  description:
-    "Looking for the best Web Design Agency UK? Webspires builds websites that help your business grow and stand out online. We offer web development, SEO, social media, Google Ads, Meta Ads & more.",
+  const title = "Best Web Design Agency UK | Webspires Limited";
+  const description =
+    "Looking for the best Web Design Agency UK? Webspires builds websites that help your business grow and stand out online. We offer web development, SEO, social media, Google Ads, Meta Ads & more.";
 
-  alternates: {
-    canonical: "https://webspires.co.uk/",
-    languages: { "en-GB": "https://webspires.co.uk/" },
-  },
+  return {
+    ...generateSEO({ path: "/" }),
 
-  openGraph: {
-    type: "website",
-    locale: "en_GB",
-    url: "https://webspires.co.uk/",
-    siteName: "Webspires",
-    title: "Best Web Design Agency UK | Webspires Limited",
-    description:
-      "Looking for the best Web Design Agency UK? Webspires builds websites that help your business grow and stand out online.",
-    images: [
-      {
-        url: "/images/webspires-logo-icon.png",
-        width: 1200,
-        height: 630,
-        alt: "Webspires – Best Web Design Agency UK",
-      },
-    ],
-  },
+    title: {
+      default: title,
+      template: `%s | ${siteName}`,
+    },
+    description,
 
-  twitter: {
-    card: "summary_large_image",
-    title: "Best Web Design Agency UK | Webspires Limited",
-    description:
-      "UK's results-driven digital agency. High-performance websites, SEO & paid campaigns that grow your business.",
-    images: ["/images/webspires-logo-icon.png"],
-    creator: "@webspires",
-  },
+    alternates: {
+      canonical: "https://webspires.co.uk/",
+      languages: { "en-GB": "https://webspires.co.uk/" },
+    },
 
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    openGraph: {
+      type: "website",
+      locale: "en_GB",
+      url: "https://webspires.co.uk/",
+      siteName,
+      title,
+      description:
+        "Looking for the best Web Design Agency UK? Webspires builds websites that help your business grow and stand out online.",
+      images: [
+        {
+          url: previewImage,
+          width: 1200,
+          height: 630,
+          alt: `${siteName} – Best Web Design Agency UK`,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description:
+        "UK's results-driven digital agency. High-performance websites, SEO & paid campaigns that grow your business.",
+      images: [previewImage],
+      creator: "@webspires",
+    },
+
+    robots: {
       index: true,
       follow: true,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
     },
-  },
 
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/images/webspires-logo-icon.png",
-  },
-};
+    icons: {
+      icon: favicon,
+      shortcut: favicon,
+      apple: previewImage,
+    },
+  };
+}
 
 /* ── Root Layout ─────────────────────────────────────────── */
 export default function RootLayout({ children }) {
@@ -101,6 +124,12 @@ export default function RootLayout({ children }) {
         className="min-h-full flex flex-col antialiased"
         cz-shortcut-listen="true"
       >
+        {/* GTM <noscript> — must be the first thing inside <body> */}
+        <GoogleTagManagerNoScript />
+
+        {/* GTM loader + SPA pageview tracking (afterInteractive) */}
+        <GoogleTagManager />
+
         {children}
       </body>
     </html>

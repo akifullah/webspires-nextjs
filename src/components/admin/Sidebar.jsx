@@ -8,6 +8,12 @@ import {
     PlusCircle,
     Database,
     Briefcase,
+    Inbox,
+    Mail,
+    Tags,
+    Image as ImageIcon,
+    Users,
+    Settings,
     ExternalLink,
     LogOut,
 } from 'lucide-react';
@@ -15,10 +21,16 @@ import { logoutAction } from '@/app/actions/auth';
 
 const links = [
     { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
+    { href: '/admin/inquiries', label: 'Inquiries', icon: Inbox },
+    { href: '/admin/newsletter', label: 'Newsletter', icon: Mail },
     { href: '/admin/posts', label: 'All Posts', icon: FileText },
     { href: '/admin/posts/new', label: 'New Post', icon: PlusCircle },
+    { href: '/admin/content/blogCategories', label: 'Categories', icon: Tags },
     { href: '/admin/content', label: 'Site Content', icon: Database },
     { href: '/admin/content/projects', label: 'Projects', icon: Briefcase },
+    { href: '/admin/media', label: 'Media', icon: ImageIcon },
+    { href: '/admin/users', label: 'Users', icon: Users },
+    { href: '/admin/settings', label: 'Settings', icon: Settings },
 ];
 
 export default function Sidebar({ username }) {

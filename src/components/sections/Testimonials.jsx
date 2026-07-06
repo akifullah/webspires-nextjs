@@ -64,7 +64,7 @@ const testimonials = [
         avatarBg: '#10b981',
         stars: 5,
         platform: 'Google',
-        text: 'Communication, Quality & Services provided. 10/10 👌',
+        text: 'Communication, Quality & Services provided. 10/10',
         tags: ['Quality', 'Communication'],
         metric: '10/10 Rating',
     },
