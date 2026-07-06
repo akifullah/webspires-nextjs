@@ -6,27 +6,27 @@ export const revalidate = 3600
 export const dynamicParams = true
 
 const SITE = 'https://webspires.co.uk'
-const HUB = '/services/google-ads-management'
+const HUB = '/services/seo'
 
 const OPTS = {
-    hub: { label: 'Google Ads Management', href: HUB },
+    hub: { label: 'SEO', href: HUB },
     breadcrumb: [
         { name: 'Home', href: '/' },
         { name: 'Services', href: '/services' },
-        { name: 'Google Ads Management', href: HUB },
+        { name: 'SEO', href: HUB },
     ],
-    utm: 'googleadschild',
-    signature: false,
+    utm: 'seochild',
+    signature: true,
 }
 
 export async function generateStaticParams() {
-    const items = await getContentItems('googleAdsChildren')
-    return items.map((c) => ({ child: c.slug }))
+    const items = await getContentItems('seoChildren')
+    return items.map((c) => ({ slug: c.slug }))
 }
 
 export async function generateMetadata({ params }) {
-    const { child } = await params
-    const svc = await getContentItem('googleAdsChildren', child)
+    const { slug } = await params
+    const svc = await getContentItem('seoChildren', slug)
     if (!svc) return {}
     const url = `${SITE}${HUB}/${svc.slug}/`
     const title = svc.metaTitle || `${svc.name} | Webspires`
@@ -47,10 +47,10 @@ export async function generateMetadata({ params }) {
     }
 }
 
-export default async function GoogleAdsChildPage({ params }) {
-    const { child } = await params
-    const items = await getContentItems('googleAdsChildren')
-    const svc = items.find((c) => c.slug === child)
+export default async function SeoChildPage({ params }) {
+    const { slug } = await params
+    const items = await getContentItems('seoChildren')
+    const svc = items.find((c) => c.slug === slug)
     if (!svc) notFound()
     const siblings = items.filter((c) => c.slug !== svc.slug)
     return <DeepServicePage svc={svc} siblings={siblings} opts={OPTS} />

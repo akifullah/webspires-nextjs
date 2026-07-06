@@ -168,7 +168,7 @@ export default function Hero() {
                     </div>
 
                     {/* Partner badge strip */}
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-3" role="list" aria-label="Technology partners">
+                    {/* <div className="flex flex-wrap items-center gap-x-4 gap-y-3" role="list" aria-label="Technology partners">
                         {badges.map((b) => (
                             <div
                                 key={b.label}
@@ -180,7 +180,7 @@ export default function Hero() {
                                 <span className="text-[11px] font-semibold text-gray-500 leading-tight hidden sm:block">{b.label}</span>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* RIGHT ── Person + Testimonial */}

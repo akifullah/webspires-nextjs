@@ -92,6 +92,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" dir="ltr" className={`${geistSans.variable} ${jetbrainsMono.variable} h-full`}>
+      <head>
+        {/* Preload the primary self-hosted weights to cut CLS / first-paint swap */}
+        <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/clash-600.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      </head>
       <body
         className="min-h-full flex flex-col antialiased"
         cz-shortcut-listen="true"

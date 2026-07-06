@@ -285,20 +285,14 @@ img, video {
 /* Drop the free Fontshare files into public/fonts/ (see the README there).
    Until present, the fallback stack in --font-display / --font-body renders
    cleanly, so the build and site never break. */
-@font-face {
-  font-family: 'ClashDisplay';
-  src: url('/fonts/clash-display.woff2') format('woff2');
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Satoshi';
-  src: url('/fonts/satoshi.woff2') format('woff2');
-  font-weight: 300 900;
-  font-style: normal;
-  font-display: swap;
-}
+/* Clash Display — headings/display (weights 500/600/700) */
+@font-face { font-family: 'ClashDisplay'; src: url('/fonts/clash-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'ClashDisplay'; src: url('/fonts/clash-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'ClashDisplay'; src: url('/fonts/clash-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+/* Satoshi — body/UI (weights 400/500/700; 600 maps to nearest) */
+@font-face { font-family: 'Satoshi'; src: url('/fonts/satoshi-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/fonts/satoshi-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Satoshi'; src: url('/fonts/satoshi-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
 
 /* ── Answer Engine utilities ──────────────────────────── */
 /* Layered radial glow mesh (red + violet), sits under content */

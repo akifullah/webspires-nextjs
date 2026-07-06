@@ -20,6 +20,7 @@ export default async function sitemap() {
         googleAdsChildren,
         caseStudyCategories,
         projectsData,
+        seoChildren,
     ] = await Promise.all([
         getContentItems('services'),
         getContentItems('industries'),
@@ -27,6 +28,7 @@ export default async function sitemap() {
         getContentItems('googleAdsChildren'),
         getContentItems('caseStudyCategories'),
         getContentItems('projects'),
+        getContentItems('seoChildren'),
     ]);
 
     const staticRoutes = [
@@ -92,6 +94,13 @@ export default async function sitemap() {
         priority: 0.6,
     }));
 
+    const seoChildRoutes = seoChildren.map((s) => ({
+        url: `${base}/services/seo/${s.slug}`,
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+    }));
+
     let blogRoutes = [];
     try {
         const posts = await getAllPublishedSlugs();
@@ -113,6 +122,7 @@ export default async function sitemap() {
         ...locationRoutes,
         ...caseStudyRoutes,
         ...projectRoutes,
+        ...seoChildRoutes,
         ...blogRoutes,
     ];
 }
