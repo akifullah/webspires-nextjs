@@ -359,7 +359,7 @@ export default function DeepServicePage({ svc, siblings = [], opts }) {
             <section className="bg-ink-900 py-16 lg:py-20">
                 <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-10">
                     <div className="mb-8 flex items-center justify-between">
-                        <h2 className="font-display text-[22px] font-semibold text-text-hi">More {opts.hub.label} services</h2>
+                        <h2 className="font-display text-[22px] font-semibold text-text-hi">More {opts.relatedLabel || opts.hub.label} services</h2>
                         <Link href={opts.hub.href} className="text-[13px] font-bold text-signal hover:underline">{opts.hub.label} →</Link>
                     </div>
                     <div className="flex flex-wrap gap-3">

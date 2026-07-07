@@ -5,7 +5,7 @@ import DeepServicePage from '@/components/services/DeepServicePage'
 export const revalidate = 3600
 
 const SITE = 'https://webspires.co.uk'
-const SLUG = 'google-guarantee'
+const SLUG = 'conversion-rate-optimisation'
 
 const OPTS = {
     hub: { label: 'Services', href: '/services' },
@@ -14,7 +14,7 @@ const OPTS = {
         { name: 'Home', href: '/' },
         { name: 'Services', href: '/services' },
     ],
-    utm: 'googleguarantee',
+    utm: 'cro',
     signature: false,
 }
 
@@ -40,7 +40,7 @@ export async function generateMetadata() {
     }
 }
 
-export default async function GoogleGuaranteePage() {
+export default async function ConversionRateOptimisationPage() {
     const svc = await getContentItem('deepPages', SLUG)
     if (!svc) notFound()
     return <DeepServicePage svc={svc} siblings={[]} opts={OPTS} />

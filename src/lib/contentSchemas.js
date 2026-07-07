@@ -587,6 +587,74 @@ export const CONTENT_TYPES = {
         ],
     },
 
+    deepPages: {
+        key: 'deepPages',
+        label: 'Deep Pages (standalone)',
+        singular: 'Deep Page',
+        titleField: 'name',
+        slugRequired: true,
+        slugFromField: 'name',
+        basePath: '/services',
+        indexPath: '/services',
+        // No dynamicPath: these are rendered by bespoke static routes
+        // (e.g. /services/conversion-rate-optimisation) so they never create
+        // an automatic [slug] route.
+        sections: [
+            { title: 'Basics & SEO', fields: ['name', 'category', 'serviceType', 'priceRange', 'metaTitle', 'metaDescription'] },
+            { title: 'Hero', fields: ['heroHeading', 'heroSub', 'heroCta'] },
+            {
+                title: 'Content sections (all optional)',
+                fields: [
+                    'definitionHeading', 'intro', 'stats', 'deepHeading', 'deepBody',
+                    'problemsHeading', 'problems', 'includedHeading', 'included', 'focusBlocks',
+                    'process', 'deliverable', 'pricingHeading', 'pricing', 'pricingNote',
+                    'whyChoose', 'results', 'crossLinks', 'ctaHeading',
+                ],
+            },
+            { title: 'FAQ', fields: ['faqs'] },
+        ],
+        fields: [
+            { name: 'name', label: 'Name', type: 'text', required: true },
+            { name: 'category', label: 'Category (eyebrow)', type: 'text' },
+            { name: 'serviceType', label: 'SEO — Service type (schema)', type: 'text' },
+            { name: 'priceRange', label: 'SEO — Price range (schema)', type: 'text' },
+            { name: 'metaTitle', label: 'Meta title', type: 'text' },
+            { name: 'metaDescription', label: 'Meta description', type: 'textarea' },
+            { name: 'heroHeading', label: 'Hero heading (H1)', type: 'text' },
+            { name: 'heroSub', label: 'Hero subheading', type: 'textarea' },
+            { name: 'heroCta', label: 'Hero CTA label', type: 'text' },
+            { name: 'definitionHeading', label: 'Definition heading', type: 'text' },
+            { name: 'intro', label: 'Definition / intro paragraph', type: 'textarea' },
+            {
+                name: 'stats', label: 'Metric tiles', type: 'objectList',
+                subfields: [{ name: 'value', label: 'Value', type: 'text' }, { name: 'label', label: 'Label', type: 'text' }],
+            },
+            { name: 'deepHeading', label: 'Deep-dive heading', type: 'text' },
+            { name: 'deepBody', label: 'Deep-dive body', type: 'textarea', rows: 5 },
+            { name: 'problemsHeading', label: 'Problems heading', type: 'text' },
+            { name: 'problems', label: 'Problem cards', type: 'objectList', subfields: TITLE_DESC_SUB },
+            { name: 'includedHeading', label: 'What-we-do heading', type: 'text' },
+            { name: 'included', label: 'What we do', type: 'objectList', subfields: TITLE_DESC_SUB },
+            { name: 'focusBlocks', label: 'Focus blocks (key levers)', type: 'objectList', subfields: TITLE_DESC_SUB },
+            {
+                name: 'process', label: 'Process steps (HowTo)', type: 'objectList',
+                subfields: [{ name: 'step', label: 'Step', type: 'text' }, { name: 'title', label: 'Title', type: 'text' }, { name: 'desc', label: 'Description', type: 'textarea' }],
+            },
+            { name: 'deliverable', label: 'What you get', type: 'textarea' },
+            { name: 'pricingHeading', label: 'Pricing heading', type: 'text' },
+            {
+                name: 'pricing', label: 'Pricing tiers', type: 'objectList',
+                subfields: [{ name: 'name', label: 'Tier name', type: 'text' }, { name: 'range', label: 'Price / range', type: 'text' }, { name: 'includes', label: 'Includes', type: 'textarea' }],
+            },
+            { name: 'pricingNote', label: 'Pricing note', type: 'textarea' },
+            { name: 'whyChoose', label: 'Why choose Webspires', type: 'objectList', subfields: TITLE_DESC_SUB },
+            { name: 'results', label: 'Results paragraph', type: 'textarea' },
+            { name: 'ctaHeading', label: 'CTA heading', type: 'text' },
+            { name: 'crossLinks', label: 'Related links', type: 'objectList', subfields: LINK_SUB },
+            { name: 'faqs', label: 'FAQs', type: 'objectList', subfields: FAQ_SUB },
+        ],
+    },
+
     servicePages: {
         key: 'servicePages',
         label: 'Service Pages',
