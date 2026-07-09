@@ -6,16 +6,20 @@ import AboutServices from '@/components/about/AboutServices'
 import AboutCTA from '@/components/about/AboutCTA'
 
 export const metadata = {
-  title: 'About Us | Best Web Design Agency UK | Webspires Limited',
+  // `absolute` bypasses the root "%s | Webspires" template (no doubling), and
+  // the page-specific claim replaces the stale site-wide "Best Web Design" one.
+  title: { absolute: 'About Us | Webspires' },
   description:
-    'Learn about Webspires Limited the UK\'s results-driven web design and digital marketing agency based in Bolton. Meet our team, discover our values, and see why 500+ businesses trust us.',
+    'Learn about Webspires, a UK web design and digital marketing agency. Meet the team, discover our values, and see how we help businesses grow.',
   alternates: {
     canonical: 'https://webspires.co.uk/about-us/',
   },
   openGraph: {
-    title: 'About Us | Best Web Design Agency UK | Webspires Limited',
+    type: 'website',
+    locale: 'en_GB',
+    title: 'About Us | Webspires',
     description:
-      'Webspires is the UK\'s leading web design and digital marketing agency. Discover our story, values, and expert team.',
+      'A UK web design and digital marketing agency. Discover our story, values, and team.',
     url: 'https://webspires.co.uk/about-us/',
     images: [{ url: '/images/webspires-logo-icon.png', width: 1200, height: 630 }],
   },

@@ -598,17 +598,35 @@ export const CONTENT_TYPES = {
         indexPath: '/services',
         // No dynamicPath: these are rendered by bespoke static routes
         // (e.g. /services/conversion-rate-optimisation) so they never create
-        // an automatic [slug] route.
+        // an automatic [slug] route. Each bespoke route is listed so a backend
+        // edit on-demand revalidates the live page (not just its hourly ISR).
+        extraPaths: [
+            '/services/conversion-rate-optimisation',
+            '/services/google-guarantee',
+            '/industries/ecommerce',
+            '/industries/local-businesses',
+            '/industries/b2b-companies',
+            '/industries/healthcare-clinics',
+            '/services/web-design',
+        ],
         sections: [
             { title: 'Basics & SEO', fields: ['name', 'category', 'serviceType', 'priceRange', 'metaTitle', 'metaDescription'] },
             { title: 'Hero', fields: ['heroHeading', 'heroSub', 'heroCta'] },
             {
                 title: 'Content sections (all optional)',
                 fields: [
-                    'definitionHeading', 'intro', 'stats', 'deepHeading', 'deepBody',
+                    'definitionHeading', 'intro', 'lifecycle', 'stats', 'deepHeading', 'deepBody',
                     'problemsHeading', 'problems', 'includedHeading', 'included', 'focusBlocks',
+                    'aiSearchHeading', 'aiSearchBody', 'aiSearchQuery', 'aiSearchAnswer',
                     'process', 'deliverable', 'pricingHeading', 'pricing', 'pricingNote',
                     'whyChoose', 'results', 'crossLinks', 'ctaHeading',
+                ],
+            },
+            {
+                title: 'Industry hub extras (optional)',
+                fields: [
+                    'proofStat', 'proofChips', 'businessTypesHeading', 'businessTypes',
+                    'testimonialsHeading', 'testimonials', 'trustStrip', 'finderJson', 'compareJson',
                 ],
             },
             { title: 'FAQ', fields: ['faqs'] },
@@ -652,6 +670,37 @@ export const CONTENT_TYPES = {
             { name: 'ctaHeading', label: 'CTA heading', type: 'text' },
             { name: 'crossLinks', label: 'Related links', type: 'objectList', subfields: LINK_SUB },
             { name: 'faqs', label: 'FAQs', type: 'objectList', subfields: FAQ_SUB },
+            // AI-search signature (rendered when opts.signature is on).
+            { name: 'aiSearchHeading', label: 'AI-search heading', type: 'text' },
+            { name: 'aiSearchBody', label: 'AI-search body', type: 'textarea' },
+            { name: 'aiSearchQuery', label: 'AI-search — example query', type: 'text' },
+            { name: 'aiSearchAnswer', label: 'AI-search — cited answer', type: 'textarea' },
+            // Industry hub extras.
+            { name: 'proofStat', label: 'Proof bar — stat line', type: 'textarea' },
+            { name: 'proofChips', label: 'Proof bar — sector chips', type: 'stringList' },
+            { name: 'businessTypesHeading', label: 'Business-types heading', type: 'text' },
+            {
+                name: 'businessTypes', label: 'Business-type use-cases', type: 'objectList',
+                subfields: [
+                    { name: 'type', label: 'Business type', type: 'text' },
+                    { name: 'channels', label: 'Channels', type: 'text' },
+                    { name: 'metric', label: 'Key metric', type: 'text' },
+                    { name: 'reason', label: 'Why', type: 'textarea' },
+                ],
+            },
+            { name: 'testimonialsHeading', label: 'Testimonials heading', type: 'text' },
+            {
+                name: 'testimonials', label: 'Testimonials (real only)', type: 'objectList',
+                subfields: [
+                    { name: 'quote', label: 'Quote', type: 'textarea' },
+                    { name: 'name', label: 'Name', type: 'text' },
+                    { name: 'business', label: 'Business', type: 'text' },
+                    { name: 'sector', label: 'Sector', type: 'text' },
+                ],
+            },
+            { name: 'trustStrip', label: 'Trust strip chips', type: 'stringList' },
+            { name: 'finderJson', label: 'Channel finder config (JSON)', type: 'textarea', rows: 6 },
+            { name: 'compareJson', label: 'Comparison table config (JSON)', type: 'textarea', rows: 6 },
         ],
     },
 

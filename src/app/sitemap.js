@@ -35,6 +35,10 @@ export default async function sitemap() {
         { path: '/', priority: 1.0, changeFrequency: 'weekly' },
         { path: '/about-us', priority: 0.7, changeFrequency: 'monthly' },
         { path: '/services', priority: 0.9, changeFrequency: 'monthly' },
+        // Canonical service pages powered by the `servicePages` type (not the
+        // `services` type below), so list them explicitly.
+        { path: '/services/generative-engine-optimisation', priority: 0.8, changeFrequency: 'monthly' },
+        { path: '/services/crm-development', priority: 0.8, changeFrequency: 'monthly' },
         { path: '/services/seo/local-seo', priority: 0.7, changeFrequency: 'monthly' },
         { path: '/industries', priority: 0.8, changeFrequency: 'monthly' },
         { path: '/locations', priority: 0.8, changeFrequency: 'monthly' },
@@ -53,12 +57,16 @@ export default async function sitemap() {
         priority: r.priority,
     }));
 
-    const serviceRoutes = servicesData.map((s) => ({
-        url: `${base}/services/${s.slug}`,
-        lastModified: now,
-        changeFrequency: 'monthly',
-        priority: 0.8,
-    }));
+    // `crm-services` 301s to `/services/crm-development`, so exclude the
+    // redirect source from the sitemap.
+    const serviceRoutes = servicesData
+        .filter((s) => s.slug !== 'crm-services')
+        .map((s) => ({
+            url: `${base}/services/${s.slug}`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        }));
 
     const industryRoutes = industriesData.map((i) => ({
         url: `${base}/industries/${i.slug}`,
@@ -95,12 +103,15 @@ export default async function sitemap() {
         priority: 0.6,
     }));
 
-    const seoChildRoutes = seoChildren.map((s) => ({
-        url: `${base}/services/seo/${s.slug}`,
-        lastModified: now,
-        changeFrequency: 'monthly',
-        priority: 0.7,
-    }));
+    // national-seo is 301'd to the SEO hub (merged), so keep it out of the sitemap.
+    const seoChildRoutes = seoChildren
+        .filter((s) => s.slug !== 'national-seo')
+        .map((s) => ({
+            url: `${base}/services/seo/${s.slug}`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        }));
 
     let blogRoutes = [];
     try {

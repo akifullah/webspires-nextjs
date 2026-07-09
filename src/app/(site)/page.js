@@ -22,7 +22,7 @@ export const revalidate = 3600;
 const title =
   "Digital Marketing Agency UK | SEO, PPC, Web Design & Growth Services";
 const description =
-  "Grow your business with a UK digital marketing agency offering SEO, PPC, web design, content, CRM and social media strategies backed by data, competitor research and measurable reporting.";
+  "UK digital marketing agency. SEO, GEO, Google Ads and web design that get you found in Google and AI search. Transparent pricing, no lock-in.";
 
 export const metadata = {
   title: { absolute: title },

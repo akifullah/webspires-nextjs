@@ -4,7 +4,7 @@ import { getContentItems } from '@/lib/content'
 export const revalidate = 3600
 
 export const metadata = {
-    title: 'Case Studies | Digital Marketing Results | Webspires UK',
+    title: { absolute: 'Case Studies | Digital Marketing Results | Webspires' },
     description: 'How Webspires drives real results for UK businesses across Google Ads, ecommerce, SEO, and local growth the method and the metrics that matter.',
     alternates: { canonical: 'https://webspires.co.uk/case-studies/' },
     openGraph: {

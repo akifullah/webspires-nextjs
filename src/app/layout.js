@@ -46,9 +46,11 @@ export async function generateMetadata() {
     // keep defaults
   }
 
-  const title = "Best Web Design Agency UK | Webspires Limited";
+  // Neutral, brand-level defaults only. Page-specific claims (e.g. web design)
+  // live on their own pages so they never leak site-wide via OG inheritance.
+  const title = `${siteName} | Digital Marketing & Web Design Agency UK`;
   const description =
-    "Looking for the best Web Design Agency UK? Webspires builds websites that help your business grow and stand out online. We offer web development, SEO, social media, Google Ads, Meta Ads & more.";
+    "Webspires is a UK digital marketing and web design agency. We build high-performance websites and run SEO, Google Ads, Meta Ads, and social media that grow your business.";
 
   return {
     ...generateSEO({ path: "/" }),
@@ -70,14 +72,13 @@ export async function generateMetadata() {
       url: "https://webspires.co.uk/",
       siteName,
       title,
-      description:
-        "Looking for the best Web Design Agency UK? Webspires builds websites that help your business grow and stand out online.",
+      description,
       images: [
         {
           url: previewImage,
           width: 1200,
           height: 630,
-          alt: `${siteName} – Best Web Design Agency UK`,
+          alt: siteName,
         },
       ],
     },
@@ -85,8 +86,7 @@ export async function generateMetadata() {
     twitter: {
       card: "summary_large_image",
       title,
-      description:
-        "UK's results-driven digital agency. High-performance websites, SEO & paid campaigns that grow your business.",
+      description,
       images: [previewImage],
       creator: "@webspires",
     },

@@ -1395,7 +1395,6 @@ export const servicePagesData = [
             { title: 'Link building', desc: 'Authority from relevant, editorially earned links.', href: '/services/seo/link-building' },
             { title: 'Local SEO', desc: 'Map pack, Google Business Profile, and "near me" reach.', href: '/services/seo/local-seo' },
             { title: 'Ecommerce SEO', desc: 'Category and product pages built to sell.', href: '/services/seo/ecommerce-seo' },
-            { title: 'National SEO', desc: 'Organic reach across the whole UK for non-local brands.', href: '/services/seo/national-seo' },
             { title: 'AI search', desc: 'Entity and citation work that earns answers in AI engines.', href: '/services/generative-engine-optimisation' },
         ],
         s2Adoption:
@@ -1422,7 +1421,6 @@ export const servicePagesData = [
             { title: 'Link building and digital PR', desc: 'We earn relevant, editorial links and coverage from sites that pass real authority, never spam or PBNs. Quality links remain one of the strongest ranking signals in search. The outcome: higher authority and stronger positions.', href: '/services/seo/link-building' },
             { title: 'Local SEO', desc: 'We optimise your Google Business Profile, reviews, and citations so nearby customers find you in the map pack and Maps. Local visibility turns "near me" searches into calls and visits. The outcome: more local enquiries at the moment of intent.', href: '/services/seo/local-seo' },
             { title: 'Ecommerce SEO', desc: 'We optimise category, product, and faceted pages so online stores rank for terms that sell. Ecommerce SEO ties rankings to revenue, not just sessions. The outcome: more organic sales from high-intent search.', href: '/services/seo/ecommerce-seo' },
-            { title: 'National SEO', desc: 'We grow organic reach across the whole UK for brands that sell beyond one town. National SEO competes on authority and topical depth at scale. The outcome: visibility wherever your customers search.', href: '/services/seo/national-seo' },
             { title: 'AI search (GEO)', desc: 'We structure entities, schema, and answer blocks so AI engines quote your brand in their answers. AI search is where a growing share of discovery now happens. The outcome: your brand cited in ChatGPT, Perplexity, and AI Overviews.', href: '/services/generative-engine-optimisation' },
         ],
 

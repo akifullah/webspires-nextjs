@@ -99,6 +99,12 @@ const nextConfig = {
       { source: '/services/geo', destination: '/services/generative-engine-optimisation', permanent: true },
     );
 
+    // National SEO killed and merged into the SEO hub (every head term ~50/mo;
+    // its only distinct job, national vs local, lives on the hub now).
+    redirects.push(
+      { source: '/services/seo/national-seo', destination: '/services/seo', permanent: true },
+    );
+
     return redirects;
   },
 
@@ -120,6 +126,16 @@ const nextConfig = {
         source: '/images/(.*)',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        // Any *.vercel.app host (preview + the staging alias) is a duplicate of
+        // production and must never be indexed. noindex is the instruction;
+        // the canonical is only a hint. Production (webspires.co.uk) is unaffected.
+        source: '/:path*',
+        has: [{ type: 'host', value: '(.*\\.)?vercel\\.app' }],
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
         ],
       },
     ];

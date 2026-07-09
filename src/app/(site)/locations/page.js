@@ -4,7 +4,7 @@ import { getContentItems } from '@/lib/content'
 export const revalidate = 3600
 
 export const metadata = {
-    title: 'Locations We Serve | UK Digital Marketing Agency | Webspires',
+    title: { absolute: 'Locations We Serve | UK Digital Marketing Agency | Webspires' },
     description: 'Webspires works with businesses across the UK London, Manchester, Birmingham, Leeds, and Glasgow with locally targeted SEO, ads, and web design.',
     alternates: { canonical: 'https://webspires.co.uk/locations/' },
     openGraph: {

@@ -16,10 +16,14 @@ export async function generateMetadata({ params }) {
     const ind = await getContentItem('industries', slug)
     if (!ind) return {}
     return {
-        title: ind.metaTitle,
+        // `absolute` bypasses the root "%s | Webspires" template so the brand
+        // suffix already in metaTitle is not doubled.
+        title: { absolute: ind.metaTitle },
         description: ind.metaDescription,
         alternates: { canonical: `https://webspires.co.uk/industries/${ind.slug}/` },
         openGraph: {
+            type: 'website',
+            locale: 'en_GB',
             title: ind.metaTitle,
             description: ind.metaDescription,
             url: `https://webspires.co.uk/industries/${ind.slug}/`,

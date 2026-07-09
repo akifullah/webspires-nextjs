@@ -2,7 +2,7 @@ import Link from 'next/link';
 import ContactForm from '@/components/sections/ContactForm';
 
 export const metadata = {
-    title: 'Contact Us | Webspires Limited',
+    title: { absolute: 'Contact Us | Webspires' },
     description: 'Get in touch with Webspires for Web Design, SEO, Meta Ads, Google Ads, and CRM development. Have a cool project? Let’s talk.',
     alternates: { canonical: 'https://webspires.co.uk/contact/' }
 };
