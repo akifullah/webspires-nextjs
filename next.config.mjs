@@ -87,9 +87,10 @@ const nextConfig = {
       { source: '/industries/healthcare', destination: '/industries/healthcare-clinics', permanent: true },
     );
 
-    // Top-level route renames
+    // Top-level route renames + legacy pre-rebuild WordPress routes
     redirects.push(
       { source: '/service', destination: '/services', permanent: true },
+      { source: '/web-development', destination: '/services/web-design', permanent: true },
       { source: '/about', destination: '/about-us', permanent: true },
       { source: '/contact-us', destination: '/contact', permanent: true },
     );

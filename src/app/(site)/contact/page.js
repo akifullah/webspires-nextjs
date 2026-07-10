@@ -4,7 +4,21 @@ import ContactForm from '@/components/sections/ContactForm';
 export const metadata = {
     title: { absolute: 'Contact Us | Webspires' },
     description: 'Get in touch with Webspires for Web Design, SEO, Meta Ads, Google Ads, and CRM development. Have a cool project? Let’s talk.',
-    alternates: { canonical: 'https://webspires.co.uk/contact/' }
+    alternates: { canonical: 'https://webspires.co.uk/contact/' },
+    openGraph: {
+        type: 'website',
+        locale: 'en_GB',
+        title: 'Contact Us | Webspires',
+        description: 'Get in touch with Webspires for web design, SEO, Meta Ads, Google Ads, and CRM development.',
+        url: 'https://webspires.co.uk/contact/',
+        images: [{ url: '/images/webspires-logo-icon.png', width: 1200, height: 630 }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Contact Us | Webspires',
+        description: 'Get in touch with Webspires for web design, SEO, Meta Ads, Google Ads, and CRM development.',
+        images: ['/images/webspires-logo-icon.png'],
+    }
 };
 
 const pageColor = '#EE314F'; // Brand primary color

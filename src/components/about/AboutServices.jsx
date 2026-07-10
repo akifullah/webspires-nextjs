@@ -3,7 +3,7 @@ const services = [
         title: 'CRM Services',
         desc: 'Bespoke CRM development that helps you track, manage, and convert leads more effectively.',
         color: '#EE314F',
-        href: '/#crm',
+        href: '/services/crm-development',
         icon: (
             <svg viewBox="0 0 28 28" fill="none" className="w-6 h-6" aria-hidden="true">
                 <path d="M14 18l-6 6 6 6M34 18l6 6-6 6M28 12l-8 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -17,7 +17,7 @@ const services = [
         title: 'Google Ads Services',
         desc: 'Certified Google Ads campaigns designed to generate real leads and measurable UK revenue.',
         color: '#f97316',
-        href: '/#google-ads',
+        href: '/services/google-ads-management',
         icon: (
             <svg viewBox="0 0 28 28" fill="none" className="w-6 h-6" aria-hidden="true">
                 <path d="M4 20l6-8 5 6 4-5 5 7H4z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -29,7 +29,7 @@ const services = [
         title: 'Meta Ads Services',
         desc: 'Precision-targeted Facebook & Instagram campaigns that reach your ideal UK audience and convert.',
         color: '#3b82f6',
-        href: '/#meta-ads',
+        href: '/services/meta-ads-management',
         icon: (
             <svg viewBox="0 0 28 28" fill="none" className="w-6 h-6" aria-hidden="true">
                 <rect x="4" y="6" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="2" />
@@ -41,7 +41,7 @@ const services = [
         title: 'Shopify Development',
         desc: 'End-to-end Shopify stores optimised for the UK market fast checkout, payment integration, and CRO.',
         color: '#8b5cf6',
-        href: '/#shopify',
+        href: '/services/shopify-development',
         icon: (
             <svg viewBox="0 0 28 28" fill="none" className="w-6 h-6" aria-hidden="true">
                 <path d="M6 6h4l3 12h10l2-8H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -54,7 +54,7 @@ const services = [
         title: 'SEO Services',
         desc: 'Dominate Google UK rankings with data-backed SEO technical audits, link building, and content.',
         color: '#10b981',
-        href: '/#seo',
+        href: '/services/seo',
         icon: (
             <svg viewBox="0 0 28 28" fill="none" className="w-6 h-6" aria-hidden="true">
                 <circle cx="12" cy="12" r="7" stroke="currentColor" strokeWidth="2" />
@@ -66,7 +66,7 @@ const services = [
         title: 'Social Media Management',
         desc: 'Strategic social media management that builds your UK brand and turns followers into loyal customers.',
         color: '#ec4899',
-        href: '/#social-media',
+        href: '/services/social-media-management',
         icon: (
             <svg viewBox="0 0 28 28" fill="none" className="w-6 h-6" aria-hidden="true">
                 <circle cx="7" cy="7" r="3" stroke="currentColor" strokeWidth="2" />
@@ -150,7 +150,7 @@ export default function AboutServices() {
                     </p>
                     <a
                         id="about-services-all-link"
-                        href="/#services"
+                        href="/services"
                         className="inline-flex items-center gap-2 border border-gray-200 hover:border-primary text-[#1a1a2e] hover:text-primary font-bold text-sm px-6 py-3 rounded-lg transition-all duration-200 whitespace-nowrap"
                     >
                         View All Services

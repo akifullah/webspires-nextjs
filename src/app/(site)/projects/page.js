@@ -6,18 +6,27 @@ import { getContentItems } from '@/lib/content'
 export const revalidate = 3600
 
 export const metadata = {
-  title: 'Our Projects | Web Design & Digital Marketing Portfolio | Webspires UK',
+  title: { absolute: 'Our Projects | Web Design & Marketing Portfolio | Webspires' },
   description:
-    'Browse Webspires\' portfolio of 500+ completed UK projects web design, Shopify stores, SEO campaigns, Google Ads, Meta Ads, CRM systems, and social media management.',
+    'Browse Webspires\' portfolio of completed UK projects web design, Shopify stores, SEO campaigns, Google Ads, Meta Ads, CRM systems, and social media management.',
   alternates: {
     canonical: 'https://webspires.co.uk/projects/',
   },
   openGraph: {
-    title: 'Our Projects | Web Design & Digital Marketing Portfolio | Webspires UK',
+    type: 'website',
+    locale: 'en_GB',
+    title: 'Our Projects | Web Design & Marketing Portfolio | Webspires',
     description:
-      'See how Webspires has helped 500+ UK businesses grow online through web design, SEO, paid ads, and digital marketing.',
+      'See how Webspires helps UK businesses grow online through web design, SEO, paid ads, and digital marketing.',
     url: 'https://webspires.co.uk/projects/',
     images: [{ url: '/images/webspires-logo-icon.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Projects | Web Design & Marketing Portfolio | Webspires',
+    description:
+      'See how Webspires helps UK businesses grow online through web design, SEO, paid ads, and digital marketing.',
+    images: ['/images/webspires-logo-icon.png'],
   },
 }
 

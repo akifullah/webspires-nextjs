@@ -92,8 +92,8 @@ export default function AboutValues() {
                         <span className="text-primary">Everything We Do</span>
                     </h2>
                     <p className="text-gray-500 text-[16px] max-w-[540px] mx-auto leading-relaxed">
-                        Throughout our growth, we remain committed to the core beliefs that have made us
-                        the UK&apos;s most trusted digital agency for ambitious businesses.
+                        Throughout our growth, we remain committed to the core beliefs that govern
+                        every engagement.
                     </p>
                 </div>
 

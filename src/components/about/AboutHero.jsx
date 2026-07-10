@@ -70,7 +70,7 @@ export default function AboutHero() {
                         </a>
                         <a
                             id="about-hero-portfolio"
-                            href="/#portfolio"
+                            href="/projects"
                             className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold text-[14px] tracking-wide px-7 py-3.5 rounded-xl border border-white/20 transition-all duration-200 hover:-translate-y-0.5"
                         >
                             View Our Work

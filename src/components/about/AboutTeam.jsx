@@ -36,7 +36,7 @@ const team = [
         id: 'ads-lead',
         name: 'Paid Media Team',
         role: 'Google Ads & Meta Ads',
-        bio: 'Certified Google Ads and Meta Ads specialists who consistently deliver 5× ROAS for our clients through precision targeting, creative testing, and continuous optimisation.',
+        bio: 'Certified Google Ads and Meta Ads specialists who drive performance through precision targeting, creative testing, and continuous optimisation.',
         initials: 'PM',
         color: '#f97316',
         expertise: ['Google Ads', 'Meta Ads', 'Shopping Ads', 'CRO'],
@@ -83,7 +83,7 @@ export default function AboutTeam() {
                         <span className="text-primary">Experts</span>
                     </h2>
                     <p className="text-gray-400 text-[16px] max-w-[540px] mx-auto leading-relaxed">
-                        Webspires boasts a close-knit team of specialists across every discipline of digital
+                        Webspires is a close-knit team of specialists across every discipline of digital
                         marketing strategic, creative, and technical.
                     </p>
                 </div>

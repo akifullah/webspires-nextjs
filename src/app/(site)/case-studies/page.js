@@ -8,9 +8,18 @@ export const metadata = {
     description: 'How Webspires drives real results for UK businesses across Google Ads, ecommerce, SEO, and local growth the method and the metrics that matter.',
     alternates: { canonical: 'https://webspires.co.uk/case-studies/' },
     openGraph: {
+        type: 'website',
+        locale: 'en_GB',
         title: 'Case Studies | Webspires UK Digital Agency',
         description: 'Our approach to measurable results across Google Ads, ecommerce, SEO, and local business growth.',
         url: 'https://webspires.co.uk/case-studies/',
+        images: [{ url: '/images/webspires-logo-icon.png', width: 1200, height: 630 }],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Case Studies | Webspires UK Digital Agency',
+        description: 'Our approach to measurable results across Google Ads, ecommerce, SEO, and local business growth.',
+        images: ['/images/webspires-logo-icon.png'],
     },
 }
 

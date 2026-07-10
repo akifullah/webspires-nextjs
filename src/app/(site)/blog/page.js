@@ -18,6 +18,12 @@ export const metadata = {
         description:
             'Actionable guides on web design, SEO and digital marketing from the Webspires team.',
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Webspires Blog Web Design, SEO & Digital Marketing',
+        description:
+            'Actionable guides on web design, SEO and digital marketing from the Webspires team.',
+    },
 };
 
 const PER_PAGE = 9;

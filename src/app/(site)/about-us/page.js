@@ -23,6 +23,13 @@ export const metadata = {
     url: 'https://webspires.co.uk/about-us/',
     images: [{ url: '/images/webspires-logo-icon.png', width: 1200, height: 630 }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us | Webspires',
+    description:
+      'A UK web design and digital marketing agency. Discover our story, values, and team.',
+    images: ['/images/webspires-logo-icon.png'],
+  },
 }
 
 const aboutPageSchema = {

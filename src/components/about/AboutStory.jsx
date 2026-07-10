@@ -2,7 +2,7 @@ const milestones = [
     { year: '2023', label: 'Founded', desc: 'Webspires Limited was established in Bolton, UK, with a clear mission: help local businesses win online.' },
     { year: '2023', label: 'First 50 Clients', desc: 'Within our first year, we successfully delivered projects for over 50 businesses across the UK, earning 5-star reviews on Google.' },
     { year: '2024', label: '500+ Projects', desc: 'Crossed 500+ completed projects milestone, spanning web design, SEO, Google Ads, Meta Ads, CRM, and Shopify development.' },
-    { year: '2025', label: 'UK Market Leaders', desc: 'Recognised as one of the UK\'s fastest-growing digital agencies, trusted by businesses from Bolton to London.' },
+    { year: '2025', label: 'Serving the UK', desc: 'Working with businesses from Bolton to London across web design, SEO, paid media, and CRM development.' },
 ]
 
 export default function AboutStory() {
@@ -38,21 +38,21 @@ export default function AboutStory() {
                             </p>
                             <p>
                                 Our team is made up of specialists who have spent years mastering their craft across
-                                web design, SEO, paid media, and CRM development. We bring global-standard expertise
+                                web design, SEO, paid media, and CRM development. We combine hands-on experience
                                 with a genuine understanding of the UK market.
                             </p>
                         </div>
 
                         <div className="flex flex-wrap gap-4 mt-8">
                             <a
-                                href="/#portfolio"
+                                href="/projects"
                                 id="story-portfolio-link"
                                 className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold text-sm px-6 py-3 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
                             >
                                 Our Portfolio
                             </a>
                             <a
-                                href="/#testimonials"
+                                href="/case-studies"
                                 id="story-testimonials-link"
                                 className="inline-flex items-center gap-2 border border-gray-200 hover:border-primary text-[#1a1a2e] hover:text-primary font-bold text-sm px-6 py-3 rounded-lg transition-all duration-200"
                             >
