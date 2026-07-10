@@ -118,8 +118,7 @@ export default async function WebDesignPage() {
                         {/* Hero composition: site → score → search → enquiry */}
                         <div className="reveal">
                             <div className="rounded-[var(--r-lg)] border border-hairline bg-ink-800/70 p-5 backdrop-blur">
-                                <BeforeAfterSlider />
-                                <div className="mt-4 grid grid-cols-3 gap-3 font-mono text-[11px]">
+                                <div className="grid grid-cols-3 gap-3 font-mono text-[11px]">
                                     <div className="rounded-[var(--r-md)] border border-hairline bg-ink-700 p-3 text-center"><p className="text-signal">LCP</p><p className="mt-1 text-text-hi">1.4s</p></div>
                                     <div className="rounded-[var(--r-md)] border border-hairline bg-ink-700 p-3 text-center"><p className="text-signal">Ranks</p><p className="mt-1 text-text-hi">Day one</p></div>
                                     <div className="rounded-[var(--r-md)] border border-hairline bg-ink-700 p-3 text-center"><p className="text-signal">Leads</p><p className="mt-1 text-text-hi">Tracked</p></div>
@@ -191,9 +190,10 @@ export default async function WebDesignPage() {
                             <div className="mt-4 rounded-[var(--r-md)] border border-hairline bg-ink-700 p-4">
                                 <p className="text-[15px] leading-relaxed text-text-hi">{svc.aiSearchAnswer}</p>
                                 <div className="mt-3 flex flex-wrap gap-2 font-mono text-[11px] text-text-mid">
-                                    <span className="rounded-full border border-hairline px-2.5 py-1">↳ Google AI Overviews</span>
-                                    <span className="rounded-full border border-hairline px-2.5 py-1">ChatGPT</span>
+                                    <span className="rounded-full border border-hairline px-2.5 py-1">AI SEARCH RESULT</span>
+                                    <span className="rounded-full border border-hairline px-2.5 py-1">ILLUSTRATION</span>
                                 </div>
+                                <p className="mt-3 font-mono text-[10px] text-text-mid/60">Illustrative example, not a real AI response.</p>
                             </div>
                         </div>
                     </div>

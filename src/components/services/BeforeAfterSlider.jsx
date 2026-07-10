@@ -68,7 +68,7 @@ export default function BeforeAfterSlider() {
                 <span className="pointer-events-none absolute right-3 top-3 rounded-[var(--r-pill)] bg-signal px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-white">After</span>
             </div>
             <label className="mt-4 block">
-                <span className="mb-2 block font-mono text-[12px] uppercase tracking-[0.1em] text-text-mid">Drag to compare a rebuild</span>
+                <span className="mb-2 block font-mono text-[12px] uppercase tracking-[0.1em] text-text-mid">Illustrative: drag to compare a rebuild</span>
                 <input
                     type="range"
                     min="0"

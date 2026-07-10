@@ -49,10 +49,10 @@ function AnswerSignature({ query, answer }) {
             <div className="mt-4 rounded-[var(--r-md)] border border-hairline bg-ink-700 p-4">
                 <p className="text-[15px] leading-relaxed text-text-hi">{answer}</p>
                 <div className="mt-3 flex flex-wrap gap-2 font-mono text-[11px] text-text-mid">
-                    <span className="rounded-full border border-hairline px-2.5 py-1">↳ cited by ChatGPT</span>
-                    <span className="rounded-full border border-hairline px-2.5 py-1">■ Google AI Overviews</span>
-                    <span className="rounded-full border border-hairline px-2.5 py-1">Perplexity</span>
+                    <span className="rounded-full border border-hairline px-2.5 py-1">AI SEARCH RESULT</span>
+                    <span className="rounded-full border border-hairline px-2.5 py-1">ILLUSTRATION</span>
                 </div>
+                <p className="mt-3 font-mono text-[10px] text-text-mid/60">Illustrative example, not a real AI response.</p>
             </div>
         </div>
     )

@@ -93,11 +93,13 @@ export function AnswerEngine({
                     </div>
                 </div>
 
-                {/* citation footer */}
-                <div className="flex flex-wrap items-center gap-2 px-5 py-4 border-t border-hairline bg-ink-800/60">
-                    {sources.map((s) => (
-                        <CitationChip key={s} label={`↳ cited by ${s}`} />
-                    ))}
+                {/* citation footer — illustrative, never attributed to a real AI product */}
+                <div className="flex flex-col gap-2 px-5 py-4 border-t border-hairline bg-ink-800/60">
+                    <div className="flex flex-wrap items-center gap-2">
+                        <CitationChip label="AI search result" />
+                        <CitationChip label="Illustration" />
+                    </div>
+                    <span className="font-mono text-[10px] text-text-mid/60">Illustrative example, not a real AI response.</span>
                 </div>
             </div>
         </div>
