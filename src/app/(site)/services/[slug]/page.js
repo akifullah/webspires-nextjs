@@ -27,6 +27,11 @@ export async function generateMetadata({ params }) {
             description: svc.metaDescription,
             url: `https://webspires.co.uk/services/${svc.slug}/`,
         },
+        twitter: {
+            card: 'summary_large_image',
+            title: svc.metaTitle,
+            description: svc.metaDescription,
+        },
     }
 }
 

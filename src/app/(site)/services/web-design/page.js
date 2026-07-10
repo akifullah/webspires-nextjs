@@ -35,6 +35,12 @@ export async function generateMetadata() {
             description,
             images: [{ url: `${SITE}/images/webspires-logo-icon.png`, width: 1200, height: 630, alt: 'Web Design by Webspires' }],
         },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images: [`${SITE}/images/webspires-logo-icon.png`],
+        },
     }
 }
 

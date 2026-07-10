@@ -113,7 +113,7 @@ const certifications = [
 
 export default function Hero() {
     return (
-        <section aria-label="Hero Best Web Design Agency UK | Webspires Limited" className="bg-[#faf9f7] overflow-hidden">
+        <section aria-label="Hero" className="bg-[#faf9f7] overflow-hidden">
 
             {/* ── Main hero ──────────────────────────────────────── */}
             <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 pt-12 pb-0 lg:pt-20 flex flex-col lg:flex-row items-center gap-8 lg:gap-0">
@@ -197,9 +197,9 @@ export default function Hero() {
                             &ldquo;
                         </div>
                         <p className="text-[13px] text-gray-700 leading-relaxed font-medium">
-                            Webspires transformed our digital presence <strong className="text-primary">incredible results!</strong>
+                            Great guys, done my website, been very communicative. <strong className="text-primary">Recommend 100%.</strong>
                         </p>
-                        <p className="text-[12px] text-gray-400 mt-2 font-semibold"> Sami, CEO Webspires UK</p>
+                        <p className="text-[12px] text-gray-400 mt-2 font-semibold"> Catalin Buznea, Google review</p>
                     </div>
 
                     {/* Stats badge */}

@@ -28,6 +28,11 @@ export async function generateMetadata({ params }) {
             description: ind.metaDescription,
             url: `https://webspires.co.uk/industries/${ind.slug}/`,
         },
+        twitter: {
+            card: 'summary_large_image',
+            title: ind.metaTitle,
+            description: ind.metaDescription,
+        },
     }
 }
 

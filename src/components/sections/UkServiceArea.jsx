@@ -1,12 +1,11 @@
 import Link from 'next/link';
 
 const locations = [
-    'London',
-    'Manchester',
-    'Birmingham',
-    'Leeds',
-    'Glasgow',
-    'Bolton',
+    { city: 'London', href: '/locations/london' },
+    { city: 'Manchester', href: '/locations/manchester' },
+    { city: 'Birmingham', href: '/locations/birmingham' },
+    { city: 'Leeds', href: '/locations/leeds' },
+    { city: 'Glasgow', href: '/locations/glasgow' },
 ];
 
 export default function UkServiceArea() {
@@ -38,10 +37,10 @@ export default function UkServiceArea() {
 
                     <div className="lg:col-span-6">
                         <div className="flex flex-wrap gap-3">
-                            {locations.map((city) => (
+                            {locations.map(({ city, href }) => (
                                 <Link
                                     key={city}
-                                    href="/contact"
+                                    href={href}
                                     className="group inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-3 text-[14px] font-bold text-[#1a1a2e] transition-colors hover:border-primary hover:text-primary"
                                 >
                                     <svg

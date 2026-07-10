@@ -11,6 +11,7 @@ const navLinks = [
         href: '/services',
         hasDropdown: true,
         children: [
+            { label: 'Web Design', href: '/services/web-design' },
             { label: 'CRM Development', href: '/services/crm-development' },
             { label: 'Social Media Services', href: '/services/social-media-management' },
             { label: 'Google Ads Services', href: '/services/google-ads-management' },

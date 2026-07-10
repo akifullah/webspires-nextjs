@@ -20,7 +20,7 @@ import { getContentItems } from "@/lib/content";
 export const revalidate = 3600;
 
 const title =
-  "Digital Marketing Agency UK | SEO, PPC, Web Design & Growth Services";
+  "Digital Marketing Agency UK | SEO, Ads & Web | Webspires";
 const description =
   "UK digital marketing agency. SEO, GEO, Google Ads and web design that get you found in Google and AI search. Transparent pricing, no lock-in.";
 

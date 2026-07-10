@@ -28,6 +28,11 @@ export async function generateMetadata({ params }) {
             description: loc.metaDescription,
             url: `https://webspires.co.uk/locations/${loc.slug}/`,
         },
+        twitter: {
+            card: 'summary_large_image',
+            title: loc.metaTitle,
+            description: loc.metaDescription,
+        },
     }
 }
 

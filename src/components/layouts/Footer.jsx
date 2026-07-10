@@ -7,6 +7,7 @@ import { DEFAULT_SETTINGS, telHref } from '@/lib/settingsSchema'
 import NewsletterForm from '@/components/layouts/NewsletterForm'
 
 const services = [
+    { label: 'Web Design', href: '/services/web-design' },
     { label: 'CRM Development', href: '/services/crm-development' },
     { label: 'Social Media Services', href: '/services/social-media-management' },
     { label: 'Google Ads Services', href: '/services/google-ads-management' },
@@ -190,7 +191,7 @@ export default function Footer({ settings }) {
                         </Link>
 
                         <p className="text-[14px] text-gray-400 leading-relaxed mb-6 max-w-[300px]">
-                            UK&apos;s results-driven digital agency. We build high-performance websites, run ROI-focused marketing campaigns, and help businesses grow online. Best Web Design Agency UK since 2023.
+                            UK digital agency building high-performance websites and marketing that gets found in Google and AI search. Founded 2023.
                         </p>
 
                         {/* Social Icons */}
