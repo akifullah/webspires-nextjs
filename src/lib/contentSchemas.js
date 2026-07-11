@@ -608,6 +608,8 @@ export const CONTENT_TYPES = {
             '/industries/b2b-companies',
             '/industries/healthcare-clinics',
             '/services/web-design',
+            '/locations/london',
+            '/locations/manchester',
         ],
         sections: [
             { title: 'Basics & SEO', fields: ['name', 'category', 'serviceType', 'priceRange', 'metaTitle', 'metaDescription'] },
