@@ -610,6 +610,9 @@ export const CONTENT_TYPES = {
             '/services/web-design',
             '/locations/london',
             '/locations/manchester',
+            '/locations/birmingham',
+            '/locations/glasgow',
+            '/locations/leeds',
         ],
         sections: [
             { title: 'Basics & SEO', fields: ['name', 'category', 'serviceType', 'priceRange', 'metaTitle', 'metaDescription'] },
