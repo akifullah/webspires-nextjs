@@ -405,7 +405,7 @@ export default async function SocialMediaManagementPage() {
             <section id="pricing" className="bg-[#faf9f7] py-16 lg:py-24 scroll-mt-24">
                 <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10">
                     <div className="max-w-[760px] mb-10">
-                        <Eyebrow>Transparent Pricing</Eyebrow>
+                        <Eyebrow>Our Pricing</Eyebrow>
                         <h2 className="text-[26px] sm:text-[34px] font-extrabold text-[#1a1a2e] leading-tight mb-3">
                             {data.s12Heading}
                         </h2>

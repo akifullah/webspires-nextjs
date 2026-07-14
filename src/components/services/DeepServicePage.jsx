@@ -72,7 +72,6 @@ export function buildJsonLd(svc, opts) {
             url,
             provider: { '@type': 'Organization', name: 'Webspires', url: SITE },
             areaServed: 'United Kingdom',
-            ...(svc.priceRange ? { offers: { '@type': 'Offer', priceRange: svc.priceRange } } : {}),
         },
         {
             '@context': 'https://schema.org',

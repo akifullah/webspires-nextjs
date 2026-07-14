@@ -13,7 +13,7 @@ const values = [
     },
     {
         title: 'Radical Transparency',
-        description: 'We share exactly what we\'re doing, why we\'re doing it, and how it\'s performing. No hidden fees, no opaque dashboards just complete clarity.',
+        description: 'We share exactly what we\'re doing, why we\'re doing it, and how it\'s performing. Clear scope, clear reporting, no opaque dashboards, no jargon.',
         icon: (
             <svg viewBox="0 0 32 32" fill="none" className="w-7 h-7" aria-hidden="true">
                 <circle cx="16" cy="16" r="12" stroke="currentColor" strokeWidth="2" />

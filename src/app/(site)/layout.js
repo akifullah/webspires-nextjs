@@ -66,7 +66,6 @@ export default async function SiteLayout({ children }) {
     url: "https://webspires.co.uk",
     telephone: settings.phone,
     email: settings.email,
-    priceRange: "££",
     address,
     areaServed: "GB",
     openingHoursSpecification: [

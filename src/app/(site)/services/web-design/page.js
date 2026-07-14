@@ -69,7 +69,6 @@ export default async function WebDesignPage() {
         {
             '@context': 'https://schema.org', '@type': 'Service', name: svc.name, serviceType: svc.serviceType || 'Web Design',
             url: `${SITE}/services/web-design/`, provider: { '@type': 'Organization', name: 'Webspires', url: SITE }, areaServed: 'United Kingdom',
-            ...(svc.priceRange ? { offers: { '@type': 'Offer', priceRange: svc.priceRange } } : {}),
         },
         {
             '@context': 'https://schema.org', '@type': 'BreadcrumbList',
