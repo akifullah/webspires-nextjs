@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { getContentItems } from '@/lib/content'
 
-export const revalidate = 3600
+export const revalidate = false
 
 export const metadata = {
     title: { absolute: 'Case Studies | Digital Marketing Results | Webspires' },

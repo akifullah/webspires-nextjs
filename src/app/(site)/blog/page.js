@@ -4,7 +4,7 @@ import { getPublishedPosts, getAllCategories } from '@/lib/blog';
 import { siteConfig } from '@/config/site';
 import BlogCard from '@/components/blog/BlogCard';
 
-export const revalidate = 60;
+export const revalidate = false;
 
 export const metadata = {
     title: 'Blog Web Design, SEO & Digital Marketing Insights',

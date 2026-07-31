@@ -7,7 +7,7 @@ const ACCENT = '#EE314F';
 const BOOK = 'https://call.webspires.co.uk?utm_source=crm-development';
 const CANONICAL = 'https://webspires.co.uk/services/crm-development/';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 // Content is served from the backend dynamic system (the `servicePages`
 // content type), editable at /admin/content. The static record acts as

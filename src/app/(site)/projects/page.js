@@ -3,7 +3,7 @@ import ProjectsGrid from '@/components/projects/ProjectsGrid'
 import ProjectsCTA from '@/components/projects/ProjectsCTA'
 import { getContentItems } from '@/lib/content'
 
-export const revalidate = 3600
+export const revalidate = false
 
 export const metadata = {
   title: { absolute: 'Our Projects | Web Design & Marketing Portfolio | Webspires' },

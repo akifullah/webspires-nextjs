@@ -9,7 +9,7 @@ const BOOK = 'https://call.webspires.co.uk?utm_source=meta-ads-management';
 const CANONICAL = 'https://webspires.co.uk/services/meta-ads-management/';
 const OG_IMAGE = '/images/webspires-logo-icon.png';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 // Content is served from the backend dynamic system (the `servicePages`
 // content type), editable at /admin/content. The static record acts as

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { locationProofPoints, locationPricingFactors } from '@/data/locations'
 import { getContentItems, getContentItem } from '@/lib/content'
 
-export const revalidate = 3600
+export const revalidate = false
 export const dynamicParams = true
 
 export async function generateStaticParams() {

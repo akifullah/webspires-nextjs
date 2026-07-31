@@ -3,7 +3,7 @@ import { getContentItems } from '@/lib/content';
 import { getPublishedPosts } from '@/lib/blog';
 import { generateSEO } from '@/lib/seo';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 export const metadata = {
     ...generateSEO({

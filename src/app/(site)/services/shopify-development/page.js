@@ -12,7 +12,7 @@ const OG_IMAGE = 'https://webspires.co.uk/images/webspires-logo-icon.png';
 const PHONE = '+441615241569';
 const PHONE_LABEL = '+44 161 524 1569';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 // Web-and-dev silo page. Content is served from the backend dynamic system
 // (the `servicePages` content type, slug `shopify-development`), editable at

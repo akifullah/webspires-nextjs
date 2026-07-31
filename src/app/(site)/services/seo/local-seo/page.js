@@ -9,7 +9,7 @@ const BOOK = 'https://call.webspires.co.uk?utm_source=local-seo';
 const CANONICAL = 'https://webspires.co.uk/services/seo/local-seo/';
 const OG_IMAGE = '/images/webspires-logo-icon.png';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 // Content is served from the backend dynamic system (the `servicePages`
 // content type, slug `local-seo`), editable at /admin/content. The static

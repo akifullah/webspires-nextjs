@@ -17,7 +17,7 @@ import FaqHome from "@/components/sections/FaqHome";
 import ContactCTA from "@/components/sections/ContactCTA";
 import { getContentItems } from "@/lib/content";
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 const title =
   "Digital Marketing Agency UK | SEO, Ads & Web | Webspires";

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { getContentItem } from '@/lib/content'
 import BeforeAfterSlider from '@/components/services/BeforeAfterSlider'
 
-export const revalidate = 3600
+export const revalidate = false
 
 const SITE = 'https://webspires.co.uk'
 const SLUG = 'web-design'

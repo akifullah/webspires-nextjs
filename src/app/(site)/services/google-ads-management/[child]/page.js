@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { getContentItems, getContentItem } from '@/lib/content'
 import DeepServicePage from '@/components/services/DeepServicePage'
 
-export const revalidate = 3600
+export const revalidate = false
 export const dynamicParams = true
 
 const SITE = 'https://webspires.co.uk'

@@ -3,7 +3,7 @@ import { getContentItem } from '@/lib/content'
 import { getSettings } from '@/lib/settings'
 import DeepServicePage from '@/components/services/DeepServicePage'
 
-export const revalidate = 3600
+export const revalidate = false
 
 const SITE = 'https://webspires.co.uk'
 const SLUG = 'manchester-location'

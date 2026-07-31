@@ -1,7 +1,7 @@
 import { getContentItems } from '@/lib/content';
 import { getAllPublishedSlugs } from '@/lib/blog';
 
-export const revalidate = 3600;
+export const revalidate = false;
 
 // A sitemap must always reference the canonical production domain, never
 // the dev/local URL — otherwise crawlers index localhost URLs.

@@ -17,7 +17,7 @@ import BlogSidebar from '@/components/blog/BlogSidebar';
 import FaqAccordion from '@/components/blog/FaqAccordion';
 import ViewTracker from '@/components/blog/ViewTracker';
 
-export const revalidate = 60;
+export const revalidate = false;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {

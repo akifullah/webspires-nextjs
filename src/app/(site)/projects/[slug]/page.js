@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { getContentItems } from '@/lib/content'
 import BlogContent from '@/components/blog/BlogContent'
 
-export const revalidate = 3600
+export const revalidate = false
 export const dynamicParams = true
 
 const ACCENT_FALLBACK = '#EE314F'
